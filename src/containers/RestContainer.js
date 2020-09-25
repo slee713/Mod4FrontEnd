@@ -5,14 +5,14 @@ import RestMap from './RestMap'
 import RestDesc from '../components/RestDesc'
 
 
-class RestContainer extends Component {
-    render(){
-        return(
-            <div>
-
-            </div>
-        )
-    }
+const RestContainer = props => {
+    
+    return(
+        <div>
+            { null ? <RestCollection /> : <RestMap />}
+        </div>
+    )
+    
 }
 
 export default RestContainer

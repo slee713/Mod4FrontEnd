@@ -1,13 +1,20 @@
 import React from 'react'
 
-class Login extends React.Component{
-    render(){
-        return(
-            <div>
+const Login = props => {
+    
+    return(
+        <div>
+            <form>
+                <label for="username">Username</label>
+                <input id="username" type="text" />
+                <label for="password">Password</label>
+                <input id="password" type="password" />
+                <button type="submit">Login</button>
+            </form>
 
-            </div>
-        )
-    }
+        </div>
+    )
+    
 }
 
 export default Login
