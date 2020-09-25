@@ -4,7 +4,7 @@ import RestCard from '../components/RestCard'
 const RestCollection = props => {
     return(
         <div>
-
+            
         </div>
     )
 }
