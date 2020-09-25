@@ -22,7 +22,7 @@ class RestContainer extends Component {
         
         return(
             <div>
-                { true ? <RestCollection restuarants={this.state.restaurants}/> : <RestMap />}
+                { true ? <RestCollection restaurants={this.state.restaurants}/> : <RestMap />}
             </div>
         )
     
