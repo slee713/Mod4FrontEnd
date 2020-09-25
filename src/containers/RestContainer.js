@@ -29,14 +29,14 @@ class RestContainer extends Component {
     }
 
     previousPage = () => {
-        let start 
-        if (this.state.start>0){
-            start = this.state.start - 20
+        let start = this.state.start
+        if (start>0)
+            start = start - 20
         
-            fetch(restUrl + start)
-            .then(res => res.json())
-            .then(restaurants => this.setState({start, restaurants}))
-        }
+        fetch(restUrl + start)
+        .then(res => res.json())
+        .then(restaurants => this.setState({start, restaurants}))
+        
     }
 
    
