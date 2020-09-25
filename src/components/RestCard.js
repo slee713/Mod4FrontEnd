@@ -1,4 +1,5 @@
 import React from 'react'
+import RestDesc from './RestDesc'
 
 const RestCard = props => {
 
@@ -10,6 +11,7 @@ const RestCard = props => {
             <img src={thumb}/>
             <h3>Rating: {rating}</h3>
             <p>{location.address}</p>
+            <RestDesc restaurant={props.restaurant}/>
         </div>
     )
 }
