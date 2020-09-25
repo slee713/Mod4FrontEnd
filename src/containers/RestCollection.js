@@ -5,6 +5,8 @@ const RestCollection = props => {
 
     return(
         <div>
+            <button onClick={() => props.nextPage()}>Next Page</button>
+            <button onClick={props.previousPage} > Previous Page</button>
             {
                 props.restaurants.map(restaurant => 
                 <RestCard 
@@ -12,6 +14,8 @@ const RestCollection = props => {
                     key={restaurant.id}
                 />)
             }
+            
+            
         </div>
     )
 }

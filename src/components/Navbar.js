@@ -3,11 +3,13 @@ import React from 'react'
 const Navbar = props => {
     return(
         <div>
-            <p>Home</p>
-            <p>My Account</p>
-            <p>Reservations</p>
-            <p>Login</p>
-            <p>Logout</p>
+            <p>Home
+
+            <span><p>My Account</p></span>
+            <span><p>Reservations</p></span>
+            <span><p>Login</p></span>
+            <span><p>Logout</p></span>
+           </p> 
         </div>
     )
 }
