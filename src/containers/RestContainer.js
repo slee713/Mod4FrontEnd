@@ -4,11 +4,11 @@ import SortFilter from '../components/SortFilter'
 import RestMap from './RestMap'
 import RestDesc from '../components/RestDesc'
 
-baseUrl= "http://localhost:3000/api/v1/"
-restUrl = baseUrl + "restaurants"
+let baseUrl= "http://localhost:3000/api/v1/"
+let restUrl = baseUrl + "restaurants"
 class RestContainer extends Component {
     state={
-        restaurants = []
+        restaurants: []
     }
 
     componentDidMount(){
