@@ -4,8 +4,7 @@ import SortFilter from '../components/SortFilter'
 import RestMap from './RestMap'
 import RestDesc from '../components/RestDesc'
 
-let baseUrl= "http://localhost:3000/api/v1/"
-let restUrl = baseUrl + "restaurants"
+
 class RestContainer extends Component {
     state={
         fetch: true,
@@ -19,7 +18,7 @@ class RestContainer extends Component {
         if (this.state.fetch){
             this.setState({ restaurants: []})
             for (let start of pages) {
-                fetch(restUrl+`?start=${start}`)
+                fetch(this.props.restUrl+`?start=${start}`)
                 .then(res => res.json())
                 .then(restaurants => {
                     this.setState({

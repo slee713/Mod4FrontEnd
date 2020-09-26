@@ -1,4 +1,5 @@
 import React from 'react'
+import Login from './Login'
  
 const Navbar = props => {
     return(
@@ -7,7 +8,7 @@ const Navbar = props => {
 
             <span><p>My Account</p></span>
             <span><p>Reservations</p></span>
-            <span><p>Login</p></span>
+            <span><Login loginUrl={props.loginUrl}/></span>
             <span><p>Logout</p></span>
            </p> 
         </div>
