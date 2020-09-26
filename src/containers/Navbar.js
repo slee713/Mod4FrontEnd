@@ -33,7 +33,7 @@ class Navbar extends React.Component {
                 </div>
                 :
                 <div>
-                <span><Signup/></span>
+                <span><Signup logged_in={this.logged_in} baseUrl={this.props.baseUrl}/></span>
                 <span><Login logged_in={this.logged_in} loginUrl={this.props.loginUrl}/></span>
                 </div>
                 }
