@@ -21,9 +21,9 @@ const Login = props => {
           else{
             localStorage.token = user.token
             setOpen(false)
+            props.logged_in()
           }
         })
-        
     }
     
     return(
@@ -49,9 +49,9 @@ const Login = props => {
       </Modal.Content>
       <Modal.Actions>
 
-        {/* <Button color='green' onClick={() => setOpen(false)}>
-          Close
-        </Button> */}
+        <Button color='green' onClick={() => setOpen(false)}>
+          Back
+        </Button>
         
       </Modal.Actions>
     </Modal>
