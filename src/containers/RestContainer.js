@@ -5,38 +5,52 @@ import RestMap from './RestMap'
 import RestDesc from '../components/RestDesc'
 
 let baseUrl= "http://localhost:3000/api/v1/"
-let restUrl = baseUrl + "restaurants/"
+let restUrl = baseUrl + "restaurants"
 class RestContainer extends Component {
     state={
-        start: 0,
+        fetch: true,
         restaurants: [],
+        start: 0,
         cuisines: [],
     }
 
     componentDidMount(){
-        fetch(restUrl+this.state.start)
-        .then(res => res.json())
-        .then(restaurants => this.setState({restaurants}))
+        let pages = [0, 20, 40,60, 80]
+        if (this.state.fetch){
+            this.setState({ restaurants: []})
+            for (let start of pages) {
+                fetch(restUrl+`?start=${start}`)
+                .then(res => res.json())
+                .then(restaurants => {
+                    this.setState({
+                        restaurants : [ ...this.state.restaurants, ...restaurants]
+                    })
+                })
+            }
+            this.setState({fetch: false})
+        }
     }
 
     
 
     nextPage=() => {
-        let start = this.state.start + 20
-        fetch(restUrl+start)
-        .then(res => res.json())
-        .then(restaurants => this.setState({start, restaurants}))
+        let start = this.state.start
+        if (start < 80){
+            start = start + 20
+            this.setState({ start })
+        }
     }
 
     previousPage = () => {
         let start = this.state.start
-        if (start>0)
+        if (start>0){
             start = start - 20
-        
-        fetch(restUrl + start)
-        .then(res => res.json())
-        .then(restaurants => this.setState({start, restaurants}))
-        
+            this.setState({ start })
+        }
+    }
+
+    displayTwenty = () => {
+        return this.state.restaurants.slice(this.state.start, this.state.start + 20)
     }
 
    
@@ -48,7 +62,7 @@ class RestContainer extends Component {
             <div>
                 { true ? 
                 <RestCollection 
-                    restaurants={this.state.restaurants}
+                    restaurants={this.displayTwenty()}
                     nextPage={this.nextPage}
                     previousPage={this.previousPage}
                 /> :
