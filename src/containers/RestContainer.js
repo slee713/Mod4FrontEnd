@@ -17,7 +17,7 @@ class RestContainer extends Component {
         let pages = [0, 20, 40,60, 80]
         if (this.state.fetch){
             this.setState({ restaurants: []})
-            for (let start of pages) {
+            for (let i=0; i < pages.length; i++) {
                 fetch(this.props.restUrl+`?start=${start}`)
                 .then(res => res.json())
                 .then(restaurants => {
