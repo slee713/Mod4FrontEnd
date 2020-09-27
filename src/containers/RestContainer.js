@@ -4,7 +4,7 @@ import RestMap from './RestMap'
 import RestDesc from '../components/RestDesc'
 import Sort from '../components/Sort'
 import './RestContainer.css'
-
+import Search from '../components/Search'
 class RestContainer extends Component {
     state={
         fetch: true,
@@ -13,6 +13,18 @@ class RestContainer extends Component {
         start: 0,
         sort: ""
     }
+
+// - American 1
+// - Italian 55
+// - Afghan 1035
+// - Ethiopian 149
+// - Pakistani 139
+// - Indian 148
+// - Thai 95
+// - Korean 67
+// - Middle Eastern 137
+// - Chinese 25
+// -Japanese 60
 
     componentDidMount(){
         let pages = [0, 20, 40,60, 80]
@@ -30,6 +42,11 @@ class RestContainer extends Component {
             }
             this.setState({fetch: false})
         }
+    }
+
+    search = (e) => {
+        e.preventDefault()
+        // make fetch to resturl
     }
 
     sortBy = (sort) => {
@@ -89,6 +106,9 @@ class RestContainer extends Component {
             <div className="restContainer">
                 { true ? 
                 <div>
+                    <div>
+                        <Search search={this.search}/>
+                    </div>
                     <div className="sort">
                         <Sort sortBy={this.sortBy} />
                         <button onClick={this.previousPage} > Previous Page</button>
