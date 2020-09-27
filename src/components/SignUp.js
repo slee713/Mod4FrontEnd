@@ -62,16 +62,16 @@ const SignUp = props => {
         </div> */}
             <Form onSubmit={(e)=> signup(e)}>
                 <Form.Group unstackable widths={2}>
-                    <Form.Input label='First name' placeholder='First name' name="first_name" />
-                    <Form.Input label='Last name' placeholder='Last name' name="last_name"/>
+                    <Form.Input required label='First name' placeholder='First name' name="first_name" />
+                    <Form.Input required label='Last name' placeholder='Last name' name="last_name"/>
                 </Form.Group>
                 <Form.Group widths={2}>
-                    <Form.Input label='Address' placeholder='Address' name="address"/>
-                    <Form.Input label='Email' placeholder='Email' name="email"/>
+                    <Form.Input required label='Address' placeholder='Address' name="address"/>
+                    <Form.Input required label='Email' placeholder='Email' name="email"/>
                 </Form.Group>
                 <Form.Group widths={2}>
-                    <Form.Input label='Username' placeholder='Username' name="username"/>
-                    <Form.Input label='Password' type="password" placeholder='Password' name="password"/>
+                    <Form.Input required label='Username' placeholder='Username' name="username"/>
+                    <Form.Input required label='Password' type="password" placeholder='Password' name="password"/>
                 </Form.Group>
                 <Button type='submit'>Submit</Button>
             </Form>
