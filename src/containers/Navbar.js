@@ -25,11 +25,12 @@ class Navbar extends React.Component {
     render(){
         return(
             <div className="navbar">
-                <p>AppName</p>
+                <p >AppName</p>
+                <p onClick={() => this.props.changePage("restaurants")}> Home </p>
                 {this.state.logged_in ?
                 <div className="loggedIn">
-                    <p>My Account</p>
-                    <p>Reservations</p>
+                    <p onClick={() => this.props.changePage("account")}>My Account</p>
+                    <p onClick={()=> this.props.changePage("reservations")}>Reservations</p>
                     <p onClick={() => this.logout()}>Logout</p>
                 </div>
                 :
