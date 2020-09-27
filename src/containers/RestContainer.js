@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import RestCollection from './RestCollection'
-import SortFilter from '../components/SortFilter'
 import RestMap from './RestMap'
 import RestDesc from '../components/RestDesc'
-
+import Sort from '../components/Sort'
 
 class RestContainer extends Component {
     state={
@@ -18,7 +17,7 @@ class RestContainer extends Component {
         if (this.state.fetch){
             this.setState({ restaurants: []})
             for (let i=0; i < pages.length; i++) {
-                fetch(this.props.restUrl+`?start=${start}`)
+                fetch(this.props.restUrl+`?start=${pages[i]}`)
                 .then(res => res.json())
                 .then(restaurants => {
                     this.setState({
@@ -60,11 +59,14 @@ class RestContainer extends Component {
         return(
             <div>
                 { true ? 
+                <div>
+                <Sort />
                 <RestCollection 
                     restaurants={this.displayTwenty()}
                     nextPage={this.nextPage}
                     previousPage={this.previousPage}
-                /> :
+                /> 
+                </div>:
                 <RestMap />}
             </div>
         )
