@@ -9,6 +9,7 @@ class RestContainer extends Component {
     state={
         fetch: true,
         restaurants: [],
+        displayRestaurants: [],
         start: 0,
         sort: ""
     }
@@ -22,7 +23,8 @@ class RestContainer extends Component {
                 .then(res => res.json())
                 .then(restaurants => {
                     this.setState({
-                        restaurants : [ ...this.state.restaurants, ...restaurants]
+                        restaurants : [ ...this.state.restaurants, ...restaurants],
+                        displayRestaurants: [ ...this.state.restaurants, ...restaurants]
                     })
                 })
             }
@@ -31,29 +33,29 @@ class RestContainer extends Component {
     }
 
     sortBy = (sort) => {
-        let restaurants = this.state.restaurants
+        let displayRestaurants = this.state.restaurants
         
         switch (sort){
             case "ratingASC":
-                restaurants = restaurants.sort((a,b) => a.rating - b. rating)
+                displayRestaurants = displayRestaurants.sort((a,b) => a.rating - b.rating)
                 break
             case "ratingDESC":
-                restaurants = restaurants.sort((a,b) => b.rating > a.rating ? 1 : -1)
+                displayRestaurants = displayRestaurants.sort((a,b) => b.rating - a.rating)
                 break;
             case "priceASC":
-                restaurants = restaurants.sort((a,b) => a.price_range - b.price_range)
+                displayRestaurants = displayRestaurants.sort((a,b) => a.price_range - b.price_range)
                 break;
             case "priceDESC":
-                restaurants = restaurants.sort((a,b) => b.price_range > a.price_range ? 1 : -1)
+                displayRestaurants = displayRestaurants.sort((a,b) => b.price_range - a.price_range)
                 break;
             case "alphaASC":
-                restaurants = restaurants.sort((a,b) => a.name > b.name ? 1 : -1)
+                displayRestaurants = displayRestaurants.sort((a,b) => a.name.localeCompare(b.name))
                 break;
             case "alphaDESC":
-                restaurants = restaurants.sort((a,b) => b.name > a.name ? 1 : -1)
+                displayRestaurants = displayRestaurants.sort((a,b) => b.name.localeCompare(a.name))
                 break;
         }
-        this.setState({restaurants, sort})
+        this.setState({displayRestaurants, sort})
     }
 
     
@@ -75,7 +77,7 @@ class RestContainer extends Component {
     }
 
     displayTwenty = () => {
-        return this.state.restaurants.slice(this.state.start, this.state.start + 20)
+        return this.state.displayRestaurants.slice(this.state.start, this.state.start + 20)
     }
 
    
