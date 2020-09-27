@@ -85,7 +85,17 @@ class RestContainer extends Component {
     }
 
     displayTwenty = () => {
-        return this.state.displayRestaurants.slice(this.state.start, this.state.start + 20)
+        let cuisines = this.state.cuisines
+        if (cuisines.length === 0)
+            return this.state.displayRestaurants.slice(this.state.start, this.state.start + 20)
+        else if (cuisines.length>0){
+            fetch(this.props.restUrl+`?cuisines=${cuisines}&start=0`)
+            .then( res => res.json())
+            .then(displayRestaurants => {
+                this.setState({displayRestaurants})
+            })
+            return this.state.displayRestaurants.slice(this.state.start, this.state.start + 20)
+        }
     }
     
     cuisineFilter = (values) => {
