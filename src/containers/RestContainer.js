@@ -87,12 +87,17 @@ class RestContainer extends Component {
             <div className="restContainer">
                 { true ? 
                 <div>
-                <Sort sortBy={this.sortBy} />
-                <RestCollection 
-                    restaurants={this.displayTwenty()}
-                    nextPage={this.nextPage}
-                    previousPage={this.previousPage}
-                /> 
+                    <div className="sort">
+                        <Sort sortBy={this.sortBy} />
+                        <button onClick={() => this.nextPage()}>Next Page</button>
+                        <button onClick={this.previousPage} > Previous Page</button>
+                    </div>
+                    <RestCollection 
+                        restaurants={this.displayTwenty()}
+                        nextPage={this.nextPage}
+                        previousPage={this.previousPage}
+                    /> 
+                    
                 </div>:
                 <RestMap />}
             </div>

@@ -1,3 +1,13 @@
 .restContainer{
     margin-top: 80px;
 }
+
+.sort {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    background: yellow;
+    width: 100%;
+}

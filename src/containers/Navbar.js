@@ -25,7 +25,7 @@ class Navbar extends React.Component {
     render(){
         return(
             <div className="navbar">
-                <p>Home</p>
+                <p>AppName</p>
                 {this.state.logged_in ?
                 <div className="loggedIn">
                     <p>My Account</p>

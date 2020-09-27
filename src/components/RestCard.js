@@ -1,5 +1,6 @@
 import React from 'react'
 import RestDesc from './RestDesc'
+import './RestCard.css'
 
 // const RestCard = props => {
 
@@ -22,8 +23,8 @@ import { Card, Image } from 'semantic-ui-react'
 const RestCard = (props) => {
     const {name, location, rating, thumb, price_range} = props.restaurant
     return(
-    <Card>
-    <Image src={thumb ? thumb : props.image} wrapped ui={false} />
+    <Card className ="card">
+    <Image className="img" src={thumb ? thumb : props.image} wrapped ui={false} />
     <Card.Content>
       <Card.Header>{name}</Card.Header>
       <Card.Description>
