@@ -30,10 +30,10 @@ class RestContainer extends Component {
         }
     }
 
-    sortBy = (value) => {
+    sortBy = (sort) => {
         let restaurants = this.state.restaurants
-        let sort = value
-        switch (value){
+        
+        switch (sort){
             case "ratingASC":
                 restaurants = restaurants.sort((a,b) => a.rating - b. rating)
                 break
