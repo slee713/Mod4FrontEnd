@@ -26,16 +26,16 @@ class Navbar extends React.Component {
             <div>
                 <span>Home</span>
                 {this.state.logged_in ?
-                <div>
+                <span>
                 <span>My Account</span>
                 <span>Reservations</span>
                 <span onClick={() => this.logout()}>Logout</span>
-                </div>
+                </span>
                 :
-                <div>
+                <span>
                 <span><Signup logged_in={this.logged_in} baseUrl={this.props.baseUrl}/></span>
                 <span><Login logged_in={this.logged_in} loginUrl={this.props.loginUrl}/></span>
-                </div>
+                </span>
                 }
             </div>
         )

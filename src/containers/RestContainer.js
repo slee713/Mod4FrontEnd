@@ -9,7 +9,7 @@ class RestContainer extends Component {
         fetch: true,
         restaurants: [],
         start: 0,
-        cuisines: [],
+        sort: ""
     }
 
     componentDidMount(){
@@ -27,6 +27,32 @@ class RestContainer extends Component {
             }
             this.setState({fetch: false})
         }
+    }
+
+    sortBy = (value) => {
+        let restaurants = this.state.restaurants
+        let sort = value
+        switch (value){
+            case "ratingASC":
+                restaurants = restaurants.sort((a,b) => a.rating - b. rating)
+                break
+            case "ratingDESC":
+                restaurants = restaurants.sort((a,b) => b.rating > a.rating ? 1 : -1)
+                break;
+            case "priceASC":
+                restaurants = restaurants.sort((a,b) => a.price_range - b.price_range)
+                break;
+            case "priceDESC":
+                restaurants = restaurants.sort((a,b) => b.price_range > a.price_range ? 1 : -1)
+                break;
+            case "alphaASC":
+                restaurants = restaurants.sort((a,b) => a.name > b.name ? 1 : -1)
+                break;
+            case "alphaDESC":
+                restaurants = restaurants.sort((a,b) => b.name > a.name ? 1 : -1)
+                break;
+        }
+        this.setState({restaurants, sort})
     }
 
     
@@ -60,7 +86,7 @@ class RestContainer extends Component {
             <div>
                 { true ? 
                 <div>
-                <Sort />
+                <Sort sortBy={this.sortBy} />
                 <RestCollection 
                     restaurants={this.displayTwenty()}
                     nextPage={this.nextPage}
