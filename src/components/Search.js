@@ -1,9 +1,12 @@
 import React from 'react'
+import './Search.css'
 
 
 const Search = props => {
     return (
-        <div></div>
+        <div className='image-div'>
+            <h1>Search by Location</h1>
+        </div>
     )
 }
 
