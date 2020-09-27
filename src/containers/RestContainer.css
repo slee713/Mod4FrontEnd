@@ -11,3 +11,14 @@
     background: yellow;
     width: 100%;
 }
+
+.body{
+    display: flex;
+    flex-direction: row; 
+}
+
+.filter{
+    /* width: 30%; */
+    margin-right: 50px;
+    text-align: left
+}

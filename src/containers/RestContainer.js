@@ -5,26 +5,17 @@ import RestDesc from '../components/RestDesc'
 import Sort from '../components/Sort'
 import './RestContainer.css'
 import Search from '../components/Search'
+import Filter from '../components/Filter'
+
 class RestContainer extends Component {
     state={
         fetch: true,
         restaurants: [],
         displayRestaurants: [],
         start: 0,
-        sort: ""
+        sort: "",
+        cuisines: []
     }
-
-// - American 1
-// - Italian 55
-// - Afghan 1035
-// - Ethiopian 149
-// - Pakistani 139
-// - Indian 148
-// - Thai 95
-// - Korean 67
-// - Middle Eastern 137
-// - Chinese 25
-// -Japanese 60
 
     componentDidMount(){
         let pages = [0, 20, 40,60, 80]
@@ -96,7 +87,11 @@ class RestContainer extends Component {
     displayTwenty = () => {
         return this.state.displayRestaurants.slice(this.state.start, this.state.start + 20)
     }
-
+    
+    cuisineFilter = (values) => {
+        console.log(values)
+        this.setState({cuisines: [...values]})
+    }
    
 
     render(){
@@ -114,12 +109,16 @@ class RestContainer extends Component {
                         <button onClick={this.previousPage} > Previous Page</button>
                         <button onClick={() => this.nextPage()}>Next Page</button>
                     </div>
+                    <div className='body'>
+                        <div className='filter'>
+                        <Filter cuisineFilter={this.cuisineFilter}/>
+                        </div>
                     <RestCollection 
                         restaurants={this.displayTwenty()}
                         nextPage={this.nextPage}
                         previousPage={this.previousPage}
                     /> 
-                    
+                    </div>
                 </div>:
                 <RestMap />}
             </div>
