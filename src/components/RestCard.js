@@ -23,7 +23,7 @@ const RestCard = (props) => {
     const {name, location, rating, thumb, price_range} = props.restaurant
     return(
     <Card>
-    <Image src={thumb} wrapped ui={false} />
+    <Image src={thumb ? thumb : props.image} wrapped ui={false} />
     <Card.Content>
       <Card.Header>{name}</Card.Header>
       <Card.Description>
@@ -34,11 +34,15 @@ const RestCard = (props) => {
     </Card.Content>
     <Card.Content extra>
       <a>
-        <RestDesc restaurant={props.restaurant}/>
+        <RestDesc restaurant={props.restaurant} image={props.image}/>
       </a>
     </Card.Content>
   </Card>
     )
 }
+
+RestCard.defaultProps = {
+    image: "https://library.kissclipart.com/20181211/lke/kissclipart-home-in-a-circle-icon-clipart-computer-icons-house-e3d4f94631e5fbef.jpg"
+  };
 
 export default RestCard

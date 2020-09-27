@@ -3,6 +3,7 @@ import RestCollection from './RestCollection'
 import RestMap from './RestMap'
 import RestDesc from '../components/RestDesc'
 import Sort from '../components/Sort'
+import './RestContainer.css'
 
 class RestContainer extends Component {
     state={
@@ -83,7 +84,7 @@ class RestContainer extends Component {
 
         
         return(
-            <div>
+            <div className="restContainer">
                 { true ? 
                 <div>
                 <Sort sortBy={this.sortBy} />

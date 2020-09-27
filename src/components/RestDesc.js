@@ -13,7 +13,7 @@ const RestDesc = props => {
     >
       <Modal.Header>{name}</Modal.Header>
       <Modal.Content image>
-        <Image size='medium' src={featured_img} wrapped />
+        <Image size='medium' src={featured_img ? featured_img : props.image} wrapped />
         <Modal.Description>
           {/* <Header>Default Profile Image</Header> */}
           <p>

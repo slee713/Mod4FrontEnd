@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
-
+import { Header, Image, Modal, ButtonOr } from 'semantic-ui-react'
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 const SignUp = props => {
 
     const [open, setOpen] = React.useState(false)
@@ -42,10 +42,12 @@ const SignUp = props => {
         <Modal.Header>Signup</Modal.Header>
         <Modal.Content>
         
-        <div>
+        {/* <div>
             <form onSubmit = {(e) => signup(e)}>
                 <label for="username">Username</label>
                 <input id="username" type="text" name='username'/>
+                <label for="password">Password</label>
+                <input id="password" type="password" name='password'/>
                 <label for="firstname">First Name</label>
                 <input id="firstname" type="text" name='first_name'/>
                 <label for="lastname">Last Name</label>
@@ -54,18 +56,32 @@ const SignUp = props => {
                 <input id="email" type="text" name='email'/>
                 <label for="address">Address</label>
                 <input id="address" type="text" name='address'/>
-                <label for="password">Password</label>
-                <input id="password" type="password" name='password'/>
+                
                 <button type="submit">Create Account</button>
             </form>
-        </div>
-        
+        </div> */}
+            <Form onSubmit={(e)=> signup(e)}>
+                <Form.Group unstackable widths={2}>
+                    <Form.Input label='First name' placeholder='First name' name="first_name" />
+                    <Form.Input label='Last name' placeholder='Last name' name="last_name"/>
+                </Form.Group>
+                <Form.Group widths={2}>
+                    <Form.Input label='Address' placeholder='Address' name="address"/>
+                    <Form.Input label='Email' placeholder='Email' name="email"/>
+                </Form.Group>
+                <Form.Group widths={2}>
+                    <Form.Input label='Username' placeholder='Username' name="username"/>
+                    <Form.Input label='Password' type="password" placeholder='Password' name="password"/>
+                </Form.Group>
+                <Button type='submit'>Submit</Button>
+            </Form>
+            
         </Modal.Content>
 
         <Modal.Actions>
-            <Button color='green' onClick={() => setOpen(false)}>
+            <button color='green' onClick={() => setOpen(false)}>
             Back
-            </Button>
+            </button>
         </Modal.Actions>
     </Modal>
     )

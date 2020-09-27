@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
-
+import { Header, Image, Modal } from 'semantic-ui-react'
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 const Login = props => {
     const [open, setOpen] = React.useState(false)
     
@@ -36,7 +36,7 @@ const Login = props => {
       <Modal.Header>Login</Modal.Header>
       <Modal.Content>
         
-        <div>
+        {/* <div>
             <form onSubmit = {(e) => login(e)}>
                 <label for="username">Username</label>
                 <input id="username" type="text" name='username'/>
@@ -44,14 +44,25 @@ const Login = props => {
                 <input id="password" type="password" name='password'/>
                 <button type="submit">Login</button>
             </form>
-        </div>
+        </div> */}
+        <Form onSubmit={(e) => login(e)}>
+          <Form.Field required>
+            <label for="username">Username</label>
+            <input id="username" placeholder='Username' name="username"/>
+          </Form.Field>
+          <Form.Field required>
+            <label for="password">Password</label>
+            <input id="password" type="password" name='password'/>
+          </Form.Field>
+          <Button type='submit'>Submit</Button>
+        </Form>
         
       </Modal.Content>
       <Modal.Actions>
 
-        <Button color='green' onClick={() => setOpen(false)}>
+        <button color='green' onClick={() => setOpen(false)}>
           Back
-        </Button>
+        </button>
         
       </Modal.Actions>
     </Modal>

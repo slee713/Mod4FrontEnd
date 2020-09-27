@@ -2,7 +2,8 @@ import React from 'react'
 import { render } from 'react-dom'
 import Login from '../components/Login'
 import Signup from '../components/SignUp'
- 
+import './Navbar.css'
+
 class Navbar extends React.Component {
     state={
         logged_in: localStorage.token ? true : false
@@ -23,19 +24,23 @@ class Navbar extends React.Component {
 
     render(){
         return(
-            <div>
-                <span>Home</span>
+            <div className="navbar">
+                <p>Home</p>
                 {this.state.logged_in ?
-                <span>
-                <span>My Account</span>
-                <span>Reservations</span>
-                <span onClick={() => this.logout()}>Logout</span>
-                </span>
+                <div className="loggedIn">
+                    <p>My Account</p>
+                    <p>Reservations</p>
+                    <p onClick={() => this.logout()}>Logout</p>
+                </div>
                 :
-                <span>
-                <span><Signup logged_in={this.logged_in} baseUrl={this.props.baseUrl}/></span>
-                <span><Login logged_in={this.logged_in} loginUrl={this.props.loginUrl}/></span>
-                </span>
+                <div className="loggedOut">
+                    <div>
+                        <Signup logged_in={this.logged_in} baseUrl={this.props.baseUrl}/>
+                    </div>
+                    <div>
+                        <Login logged_in={this.logged_in} loginUrl={this.props.loginUrl}/>
+                    </div>
+                </div>
                 }
             </div>
         )
