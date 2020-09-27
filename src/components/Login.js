@@ -48,7 +48,7 @@ const Login = props => {
         <Form onSubmit={(e) => login(e)}>
           <Form.Field required>
             <label for="username">Username</label>
-            <input id="username" placeholder='Username' name="username"/>
+            <input id="username" placeholder='username' name="username"/>
           </Form.Field>
           <Form.Field required>
             <label for="password">Password</label>
