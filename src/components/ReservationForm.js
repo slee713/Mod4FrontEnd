@@ -12,6 +12,7 @@ const ReservationForm = props => {
     const [date , setDate] = React.useState('')
     const [partySize, setPartySize] = React.useState(0)
     const [timeslots, setTimeSlots] = React.useState([])
+    const [hour, setHour] = React.useState(0)
     let availableTimeSlots = (e) => {
         e.preventDefault()
         fetch(restUrl + `/${props.id}?date=${date}&party_size=${partySize}`)
@@ -44,6 +45,8 @@ const ReservationForm = props => {
                         name='timeslot'
                         options={timeslots}
                         placeholder='Select Timeslot'
+                        onChange={(e,{value}) => {
+                            console.log(value)}}
                         />
                         <Form.Input required label='Last name' placeholder='Last name' name="last_name"/>
                     </Form.Group>
