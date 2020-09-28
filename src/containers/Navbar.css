@@ -7,8 +7,12 @@
     padding-right: 10%;
     width: 100%;
     height: 80px;
-    background: yellow;
+    background: #F8CF07;
     z-index:1;
+}
+
+.logo{
+    width: 15%;
 }
 
 .loggedIn{

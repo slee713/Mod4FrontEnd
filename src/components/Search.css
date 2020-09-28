@@ -1,0 +1,9 @@
+.image-div{
+   width: auto;
+   height: 790px;
+   background-image: url('../table_image.jpg'); 
+   background-repeat: no-repeat;
+   background-size:cover;
+   background-position: left center;
+   opacity: 0.9 
+}
