@@ -12,18 +12,19 @@ let loginUrl = baseUrl + 'login'
 
 const App = () => {
  
-
-
-  
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl} />
+          <Navbar 
+            baseUrl={baseUrl} 
+            restUrl={restUrl} 
+            loginUrl={loginUrl} 
+          />
           
           <Switch>
-            <Route exact path="/" render={(routerProps)=>  <RestContainer {...routerProps} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>
-            <Route exact path="/account" render={(routerProps)=>  <Account {...routerProps} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>
-            <Route exact path="/reservations" render={(routerProps)=>  <Reservation {...routerProps} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>
+            <Route exact path="/" render={(routerProps) =>  <RestContainer {...routerProps} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>
+            <Route exact path="/account" render={(routerProps) =>  <Account {...routerProps} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>
+            <Route exact path="/reservations" render={(routerProps) =>  <Reservation {...routerProps} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>
           </Switch>
 
 
