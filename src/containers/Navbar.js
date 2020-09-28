@@ -4,7 +4,7 @@ import Login from '../components/Login'
 import Signup from '../components/SignUp'
 import './Navbar.css'
 import '../yummy.png'
-
+import { Link } from 'react-router-dom';
 class Navbar extends React.Component {
     state={
         logged_in: localStorage.token ? true : false
@@ -26,12 +26,12 @@ class Navbar extends React.Component {
     render(){
         return(
             <div className="navbar">
-                <img className='logo' src={require('../yummy.png')} onClick={() => this.props.changePage("restaurants")}/>
+                <Link to="/"><img className='logo' src={require('../yummy.png')}/></Link>
                 {this.state.logged_in ?
                 <div className="loggedIn">
-                    <p onClick={() => this.props.changePage("account")}>My Account</p>
-                    <p onClick={()=> this.props.changePage("reservations")}>Reservations</p>
-                    <p onClick={() => this.logout()}>Logout</p>
+                    <Link to="/account" >My Account</Link>
+                    <Link to="/reservations" >Reservations</Link>
+                    <p onClick={this.logout} >Logout</p>
                 </div>
                 :
                 <div className="loggedOut">
