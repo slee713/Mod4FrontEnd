@@ -13,7 +13,8 @@ class RestContainer extends Component {
         start: 0,
         sort: "",
         cuisines: 0,
-        cuisineRest: []
+        cuisineRest: [],
+        loading: true
     }
 
     // componentDidMount(){
@@ -24,7 +25,8 @@ class RestContainer extends Component {
     //         .then(restaurants => {
     //             this.setState({
     //                 restaurants : [ ...this.state.restaurants, ...restaurants],
-    //                 displayRestaurants: [ ...this.state.restaurants, ...restaurants]
+    //                 displayRestaurants: [ ...this.state.restaurants, ...restaurants],
+    //                 loading:false
     //             })
     //         })
     //     }  
@@ -89,6 +91,8 @@ class RestContainer extends Component {
     }
     
     cuisineFilter = (value) => {
+        console.log(value)
+        this.setState({loading: true})
         if (value > 0){
             this.setState({cuisineRest: []})
             let pages = [0, 20, 40, 60, 80]
@@ -98,10 +102,13 @@ class RestContainer extends Component {
                 .then(cuisineRest => {
                     this.setState({
                         cuisineRest:[ ...this.state.cuisineRest, ...cuisineRest],
-                        cuisines: value
+                        cuisines: value,
                     })
                 })
             }
+            this.setState({
+                loading: false
+            })
         }
     }
    
@@ -110,6 +117,7 @@ class RestContainer extends Component {
 
         
         return(
+            
             <div className="restContainer">
                 { true ? 
                 <div className="test">
@@ -125,11 +133,14 @@ class RestContainer extends Component {
                         <div className='filter'>
                         <Filter cuisineFilter={this.cuisineFilter}/>
                         </div>
+                    {this.state.loading ? 
+                    <div> Loading </div>
+                    :
                     <RestCollection 
                         restaurants={this.displayTwenty()}
                         nextPage={this.nextPage}
                         previousPage={this.previousPage}
-                    /> 
+                    /> }
                     </div>
                 </div>:
                 <RestMap />}

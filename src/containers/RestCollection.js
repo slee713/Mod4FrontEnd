@@ -6,8 +6,6 @@ const RestCollection = props => {
 
     return(
         <div>
-            {/* <button onClick={() => props.nextPage()}>Next Page</button>
-            <button onClick={props.previousPage} > Previous Page</button> */}
             <div className="container">
             {
                 props.restaurants.map(restaurant => 
