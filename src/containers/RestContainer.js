@@ -119,31 +119,35 @@ class RestContainer extends Component {
         return(
             
             <div className="restContainer">
+                
+                
+                <div>
+                    <Search search={this.search}/>
+                </div>
                 { true ? 
-                <div className="test">
                     <div>
-                        <Search search={this.search}/>
-                    </div>
-                    <div className="sort">
-                        <Sort sortBy={this.sortBy} />
-                        <button onClick={this.previousPage} > Previous Page</button>
-                        <button onClick={() => this.nextPage()}>Next Page</button>
-                    </div>
-                    <div className='body'>
-                        <div className='filter'>
-                        <Filter cuisineFilter={this.cuisineFilter}/>
+                        <div className="sort">
+                            <Sort sortBy={this.sortBy} />
+                            <button onClick={this.previousPage} > Previous Page</button>
+                            <button onClick={() => this.nextPage()}>Next Page</button>
                         </div>
-                    {this.state.loading ? 
-                    <div> Loading </div>
-                    :
-                    <RestCollection 
-                        restaurants={this.displayTwenty()}
-                        nextPage={this.nextPage}
-                        previousPage={this.previousPage}
-                    /> }
+                        <div className='body'>
+                            <div className='filter'>
+                            <Filter cuisineFilter={this.cuisineFilter}/>
+                            </div>
+                            {this.state.loading ? 
+                            <div> Loading </div>
+                            :
+                            <RestCollection 
+                                restaurants={this.displayTwenty()}
+                                nextPage={this.nextPage}
+                                previousPage={this.previousPage}
+                            /> }
+                        </div>
                     </div>
-                </div>:
+                :
                 <RestMap />}
+            
             </div>
         )
     
