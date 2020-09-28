@@ -27,7 +27,7 @@ const SignUp = props => {
                 else{
                   localStorage.token = user.token
                   setOpen(false)
-                  props.logged_in()
+                  props.status()
                 }
             })
     }

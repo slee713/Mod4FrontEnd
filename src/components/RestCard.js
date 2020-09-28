@@ -35,7 +35,7 @@ const RestCard = (props) => {
     </Card.Content>
     <Card.Content extra>
       <a>
-        <RestDesc restaurant={props.restaurant} image={props.image}/>
+        <RestDesc status={props.status} restaurant={props.restaurant} image={props.image}/>
       </a>
     </Card.Content>
   </Card>

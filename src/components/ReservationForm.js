@@ -17,6 +17,7 @@ const ReservationForm = props => {
     const [partySize, setPartySize] = React.useState(0)
     const [timeslots, setTimeSlots] = React.useState([])
     const [hour, setHour] = React.useState(0)
+
     let availableTimeSlots = (e) => {
         e.preventDefault()
         fetch(restUrl + `/${props.id}?date=${date}&party_size=${partySize}`)
@@ -26,6 +27,8 @@ const ReservationForm = props => {
             setTimeSlots(options)
         })
     }
+
+    
 
     return(
         <Modal
@@ -53,7 +56,7 @@ const ReservationForm = props => {
                             setHour(value)}}
                         />
                     </Form.Group>
-                    {localStorage.token ? <Button type='submit'>Submit</Button> : <div><Login baseUrl={baseUrl} loginUrl={loginUrl}/> <SignUp baseUrl={baseUrl}/></div>}
+                    {localStorage.token ? <Button type='submit'>Submit</Button> : <div><Login status={props.status} baseUrl={baseUrl} loginUrl={loginUrl}/> <SignUp status={props.status} baseUrl={baseUrl}/></div>}
                 </Form>
                 
             </Modal.Content>

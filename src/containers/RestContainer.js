@@ -139,6 +139,7 @@ class RestContainer extends Component {
                             <div> Loading </div>
                             :
                             <RestCollection 
+                                status={this.props.status}
                                 restaurants={this.displayTwenty()}
                                 nextPage={this.nextPage}
                                 previousPage={this.previousPage}

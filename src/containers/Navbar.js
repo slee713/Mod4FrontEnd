@@ -5,47 +5,39 @@ import Signup from '../components/SignUp'
 import './Navbar.css'
 import '../yummy.png'
 import { Link } from 'react-router-dom';
-class Navbar extends React.Component {
-    state={
-        logged_in: localStorage.token ? true : false
-    }
 
-    logged_in = () => {
-        this.setState({
-            logged_in: true
-        })
-    }
+
+const Navbar = props => {
     
-    logout = () => {
+    
+    const logout = () => {
         localStorage.clear() 
-        this.setState({
-            logged_in: false
-        })
+        props.status()
     }
 
-    render(){
+
         return(
             <div className="navbar">
                 <Link to="/"><img className='logo' src={require('../yummy.png')}/></Link>
-                {this.state.logged_in ?
+                {props.logged_in ?
                 <div className="loggedIn">
                     <Link to="/account" >My Account</Link>
                     <Link to="/reservations" >Reservations</Link>
-                    <p onClick={this.logout} >Logout</p>
+                    <p onClick={logout} >Logout</p>
                 </div>
                 :
                 <div className="loggedOut">
                     <div>
-                        <Signup logged_in={this.logged_in} baseUrl={this.props.baseUrl}/>
+                        <Signup status={props.status} logged_in={props.logged_in} baseUrl={props.baseUrl}/>
                     </div>
                     <div>
-                        <Login logged_in={this.logged_in} loginUrl={this.props.loginUrl}/>
+                        <Login status={props.status} logged_in={props.logged_in} loginUrl={props.loginUrl}/>
                     </div>
                 </div>
                 }
             </div>
         )
-    }
+    
 }
 
 export default Navbar

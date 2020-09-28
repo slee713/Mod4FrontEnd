@@ -1,7 +1,9 @@
 import React from 'react'
 import { Header, Image, Modal } from 'semantic-ui-react'
 import { Button, Checkbox, Form } from 'semantic-ui-react'
+
 const Login = props => {
+
     const [open, setOpen] = React.useState(false)
     
     const login = (e) => {
@@ -20,6 +22,7 @@ const Login = props => {
           else{
             localStorage.token = user.token
             setOpen(false)
+            props.status() 
           }
         })
     }

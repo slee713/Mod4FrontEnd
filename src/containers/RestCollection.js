@@ -10,6 +10,7 @@ const RestCollection = props => {
             {
                 props.restaurants.map(restaurant => 
                 <RestCard 
+                    status={props.status}
                     restaurant={restaurant} 
                     key={restaurant.id}
                 />)

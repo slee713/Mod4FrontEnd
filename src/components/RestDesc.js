@@ -37,7 +37,7 @@ const RestDesc = props => {
       <Modal.Actions>
  
         <Button color='green' positive> 
-          <ReservationForm id={id} onClick={() => setOpen(false)}/>
+          <ReservationForm status={props.status} id={id} onClick={() => setOpen(false)}/>
         </Button>
 
         <Button color='red' onClick={() => setOpen(false)}>
