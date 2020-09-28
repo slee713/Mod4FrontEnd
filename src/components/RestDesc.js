@@ -1,9 +1,10 @@
 import React from 'react'
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import ReservationForm from './ReservationForm'
 
 const RestDesc = props => {
     const [open, setOpen] = React.useState(false)
-    const {name, location, featured_img, cuisines, phone_numbers, price_range, rating} = props.restaurant
+    const {name, id, location, featured_img, cuisines, phone_numbers, price_range, rating} = props.restaurant
     return(
         <Modal
       onClose={() => setOpen(false)}
@@ -34,9 +35,9 @@ const RestDesc = props => {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-          
-        <Button color='green' positive onClick={() => setOpen(false)}>
-          Make Reservation
+ 
+        <Button color='green' positive> 
+          <ReservationForm id={id} onClick={() => setOpen(false)}/>
         </Button>
 
         <Button color='red' onClick={() => setOpen(false)}>

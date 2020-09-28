@@ -41,25 +41,6 @@ const SignUp = props => {
         >
         <Modal.Header>Signup</Modal.Header>
         <Modal.Content>
-        
-        {/* <div>
-            <form onSubmit = {(e) => signup(e)}>
-                <label for="username">Username</label>
-                <input id="username" type="text" name='username'/>
-                <label for="password">Password</label>
-                <input id="password" type="password" name='password'/>
-                <label for="firstname">First Name</label>
-                <input id="firstname" type="text" name='first_name'/>
-                <label for="lastname">Last Name</label>
-                <input id="lastname" type="text" name='last_name'/>
-                <label for="email">Email</label>
-                <input id="email" type="text" name='email'/>
-                <label for="address">Address</label>
-                <input id="address" type="text" name='address'/>
-                
-                <button type="submit">Create Account</button>
-            </form>
-        </div> */}
             <Form onSubmit={(e)=> signup(e)}>
                 <Form.Group unstackable widths={2}>
                     <Form.Input required label='First name' placeholder='First name' name="first_name" />

@@ -6,6 +6,7 @@ import Navbar from './containers/Navbar'
 import Account from './components/Account'
 import Reservation from './components/Reservation'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
 let baseUrl= "http://localhost:3000/api/v1/"
 let restUrl = baseUrl + "restaurants"
 let loginUrl = baseUrl + 'login'
