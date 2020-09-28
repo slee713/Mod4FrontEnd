@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import Login from '../components/Login'
 import Signup from '../components/SignUp'
 import './Navbar.css'
+import '../yummy.png'
 
 class Navbar extends React.Component {
     state={
@@ -25,7 +26,7 @@ class Navbar extends React.Component {
     render(){
         return(
             <div className="navbar">
-                <p>AppName</p>
+                <img className='logo' src={require('../yummy.png')}/>
                 {this.state.logged_in ?
                 <div className="loggedIn">
                     <p>My Account</p>
