@@ -15,13 +15,11 @@ const Login = props => {
         fetch(props.loginUrl, configObj)
         .then(res => res.json())
         .then(user => {
-          // console.log(user)
           if (user.error)
             alert(user.error)
           else{
             localStorage.token = user.token
             setOpen(false)
-            props.logged_in()
           }
         })
     }

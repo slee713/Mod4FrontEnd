@@ -1,10 +1,14 @@
 import React from 'react'
 import { Header, Image, Modal, ButtonOr } from 'semantic-ui-react'
 import { Button, Checkbox, Form } from 'semantic-ui-react'
+import Login from './Login'
+import SignUp from './SignUp'
+import Signup from './SignUp'
 
 
 let baseUrl= "http://localhost:3000/api/v1/"
 let restUrl = baseUrl + "restaurants"
+let loginUrl = baseUrl + 'login'
 
 const ReservationForm = props => {
     const [open, setOpen] = React.useState(false)
@@ -46,11 +50,10 @@ const ReservationForm = props => {
                         options={timeslots}
                         placeholder='Select Timeslot'
                         onChange={(e,{value}) => {
-                            console.log(value)}}
+                            setHour(value)}}
                         />
-                        <Form.Input required label='Last name' placeholder='Last name' name="last_name"/>
                     </Form.Group>
-                    <Button type='submit'>Submit</Button>
+                    {localStorage.token ? <Button type='submit'>Submit</Button> : <div><Login baseUrl={baseUrl} loginUrl={loginUrl}/> <SignUp baseUrl={baseUrl}/></div>}
                 </Form>
                 
             </Modal.Content>
