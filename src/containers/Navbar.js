@@ -26,12 +26,7 @@ class Navbar extends React.Component {
     render(){
         return(
             <div className="navbar">
-<<<<<<< HEAD
-                <p >AppName</p>
-                <p onClick={() => this.props.changePage("restaurants")}> Home </p>
-=======
-                <img className='logo' src={require('../yummy.png')}/>
->>>>>>> d0b329ecbb31525a0cade9a1db56b1890a1a09c2
+                <img className='logo' src={require('../yummy.png')} onClick={() => this.props.changePage("restaurants")}/>
                 {this.state.logged_in ?
                 <div className="loggedIn">
                     <p onClick={() => this.props.changePage("account")}>My Account</p>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import RestCollection from './RestCollection'
 import RestMap from './RestMap'
-import RestDesc from '../components/RestDesc'
 import Sort from '../components/Sort'
 import './RestContainer.css'
 import Search from '../components/Search'
@@ -9,31 +8,27 @@ import Filter from '../components/Filter'
 
 class RestContainer extends Component {
     state={
-        fetch: true,
         restaurants: [],
         displayRestaurants: [],
         start: 0,
         sort: "",
-        cuisines: []
+        cuisines: 0,
+        cuisineRest: []
     }
 
-    componentDidMount(){
-        let pages = [0, 20, 40,60, 80]
-        if (this.state.fetch){
-            this.setState({ restaurants: []})
-            for (let i=0; i < pages.length; i++) {
-                fetch(this.props.restUrl+`?start=${pages[i]}`)
-                .then(res => res.json())
-                .then(restaurants => {
-                    this.setState({
-                        restaurants : [ ...this.state.restaurants, ...restaurants],
-                        displayRestaurants: [ ...this.state.restaurants, ...restaurants]
-                    })
-                })
-            }
-            this.setState({fetch: false})
-        }
-    }
+    // componentDidMount(){
+    //     let pages = [0, 20, 40,60, 80]      
+    //     for (let i=0; i < pages.length; i++) {
+    //         fetch(this.props.restUrl+`?start=${pages[i]}`)
+    //         .then(res => res.json())
+    //         .then(restaurants => {
+    //             this.setState({
+    //                 restaurants : [ ...this.state.restaurants, ...restaurants],
+    //                 displayRestaurants: [ ...this.state.restaurants, ...restaurants]
+    //             })
+    //         })
+    //     }  
+    // }
 
     search = (e) => {
         e.preventDefault()
@@ -86,21 +81,28 @@ class RestContainer extends Component {
 
     displayTwenty = () => {
         let cuisines = this.state.cuisines
-        if (cuisines.length === 0)
+        if (cuisines === 0)
             return this.state.displayRestaurants.slice(this.state.start, this.state.start + 20)
-        else if (cuisines.length>0){
-            fetch(this.props.restUrl+`?cuisines=${cuisines}&start=0`)
-            .then( res => res.json())
-            .then(displayRestaurants => {
-                this.setState({displayRestaurants})
-            })
-            return this.state.displayRestaurants.slice(this.state.start, this.state.start + 20)
+        else if (cuisines>0){
+            return this.state.cuisineRest.slice(this.state.start, this.state.start + 20)
         }
     }
     
-    cuisineFilter = (values) => {
-        console.log(values)
-        this.setState({cuisines: [...values]})
+    cuisineFilter = (value) => {
+        if (value > 0){
+            this.setState({cuisineRest: []})
+            let pages = [0, 20, 40, 60, 80]
+            for (let i=0; i < pages.length; i++) {
+                fetch(this.props.restUrl+`?cuisines=${value}&start=${pages[i]}`)
+                .then( res => res.json())
+                .then(cuisineRest => {
+                    this.setState({
+                        cuisineRest:[ ...this.state.cuisineRest, ...cuisineRest],
+                        cuisines: value
+                    })
+                })
+            }
+        }
     }
    
 
@@ -110,7 +112,7 @@ class RestContainer extends Component {
         return(
             <div className="restContainer">
                 { true ? 
-                <div>
+                <div className="test">
                     <div>
                         <Search search={this.search}/>
                     </div>

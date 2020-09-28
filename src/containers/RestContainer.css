@@ -10,6 +10,7 @@
     z-index: 1;
     background: yellow;
     width: 100%;
+    margin-top: 880px;
 }
 
 .body{
@@ -24,4 +25,9 @@
     margin-top: 80px;
     width: auto;
     text-align: left
+}
+
+.test {
+    display: flex;
+    flex-direction: column;
 }
