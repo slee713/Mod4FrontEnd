@@ -131,12 +131,7 @@ class RestContainer extends Component {
         return(
             
             <div className="restContainer">
-                
-                
-                
                 <Search search={this.search}/>
-                
-               
                     <div className="main">
                         <div className="filter">
                             <div className='filter'>
@@ -160,10 +155,8 @@ class RestContainer extends Component {
                                 previousPage={this.previousPage}
                             />  :
                              <RestMap />}
-            
                         </div>
                     </div>
-               
             </div>
         )
     
