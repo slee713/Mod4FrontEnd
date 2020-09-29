@@ -89,10 +89,10 @@ function Search () {
         value,
         suggestions: {status, data},
         setValue,
-        clearSuggestions
+        clearSuggestions,
     } = usePlacesAutocomplete({
         requestOptions:{
-            locations: {lat: () => 38.907192, lng: () => -77.036873},
+            location: {lat: () => 38.907192, lng: () => -77.036873},
             radius: 10 * 1000
         }
     })
