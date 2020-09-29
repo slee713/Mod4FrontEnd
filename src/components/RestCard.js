@@ -2,22 +2,9 @@ import React from 'react'
 import RestDesc from './RestDesc'
 import './RestCard.css'
 
-// const RestCard = props => {
-
-//     const {name, location, rating, thumb} = props.restaurant
-
-//     return(
-//         <div>
-//             <h2>{name}</h2>
-//             <img src={thumb}/>
-//             <h3>Rating: {rating}</h3>
-//             <p>{location.address}</p>
-//             <RestDesc restaurant={props.restaurant}/>
-//         </div>
-//     )
+// hash = {
+//   "American": "image"
 // }
-
-// export default RestCard
 import { Card, Image } from 'semantic-ui-react'
 
 const RestCard = (props) => {
@@ -41,7 +28,7 @@ const RestCard = (props) => {
   </Card>
     )
 }
-
+// hash[cuisine.split(", ")[0]]
 RestCard.defaultProps = {
     image: "https://library.kissclipart.com/20181211/lke/kissclipart-home-in-a-circle-icon-clipart-computer-icons-house-e3d4f94631e5fbef.jpg"
   };
