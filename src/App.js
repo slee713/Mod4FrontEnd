@@ -35,7 +35,7 @@ const status = () => {
           
           <Switch>
             <Route exact path="/" render={(routerProps) =>  <RestContainer {...routerProps} status={status} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>
-            <Route exact path="/account" render={(routerProps) =>  <Account {...routerProps} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>
+            <Route exact path="/account" render={(routerProps) =>  <Account {...routerProps} status={status} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>
             <Route exact path="/reservations" render={(routerProps) =>  <Reservation {...routerProps} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>
           </Switch>
 
