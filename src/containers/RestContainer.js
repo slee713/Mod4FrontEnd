@@ -15,6 +15,8 @@ class RestContainer extends Component {
         cuisines: 0,
         cuisineRest: [],
         map: false,
+        lat: 38.907192,
+        lng: -77.036873
     }
 
     // componentDidMount(){
@@ -112,7 +114,7 @@ class RestContainer extends Component {
             this.setState({cuisineRest: [], sort: "", start: 0})
             let pages = [0, 20, 40, 60, 80]
             for (let i=0; i < pages.length; i++) {
-                fetch(this.props.restUrl+`?cuisines=${value}&start=${pages[i]}`)
+                fetch(this.props.restUrl+`?cuisines=${value}&start=${pages[i]}&lat=${this.state.lat}&long=${this.state.lng}`)
                 .then( res => res.json())
                 .then(cuisineRest => {
                     this.setState({
@@ -133,6 +135,8 @@ class RestContainer extends Component {
                     this.setState({
                         restaurants : [ ...this.state.restaurants, ...restaurants],
                         displayRestaurants: [ ...this.state.restaurants, ...restaurants],
+                        lat,
+                        lng
                     })
                 })
             }  
