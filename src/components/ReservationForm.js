@@ -9,6 +9,7 @@ import Signup from './SignUp'
 let baseUrl= "http://localhost:3000/api/v1/"
 let restUrl = baseUrl + "restaurants"
 let loginUrl = baseUrl + 'login'
+let reservationUrl = baseUrl + 'reservations'
 
 const ReservationForm = props => {
     const [open, setOpen] = React.useState(false)
@@ -28,7 +29,21 @@ const ReservationForm = props => {
         })
     }
 
-    
+    let makeReservation = (e) => {
+
+        e.preventDefault()
+        let configObj = {method: 'POST', 
+                        headers: {'Content-Type': 'application/json', Accept: 'application/json', Authorization: `Bearer ${localStorage.token}`},
+                        body: JSON.stringify({party: partySize, date: date, hour: hour})}
+        fetch(reservationUrl + `?restId=${props.id}`, configObj)
+        .then(res => res.json())
+        .then(response => {
+            alert(response.message)
+            setOpen(false)
+            props.closeDesc()
+        })
+
+    }
 
     return(
         <Modal
@@ -39,7 +54,7 @@ const ReservationForm = props => {
             >
             <Modal.Header>Make Reservation</Modal.Header>
             <Modal.Content>
-                <Form onSubmit={null}>
+                <Form onSubmit={(e) => makeReservation(e)}>
                     <Form.Group unstackable widths={2}>
                         <Form.Input required type='date' label='Date' placeholder='Date' name="date" onChange={(e) => setDate(e.target.value)} />
                         <Form.Input required type='number' label='Party Size' placeholder='Party Size' name="party_size" onChange={(e) => setPartySize(e.target.value)}/>

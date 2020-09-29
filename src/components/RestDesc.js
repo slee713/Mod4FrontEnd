@@ -5,6 +5,11 @@ import ReservationForm from './ReservationForm'
 const RestDesc = props => {
     const [open, setOpen] = React.useState(false)
     const {name, id, location, featured_img, cuisines, phone_numbers, price_range, rating} = props.restaurant
+
+    const closeDesc = () => {
+      setOpen(false)
+    }
+ 
     return(
         <Modal
       onClose={() => setOpen(false)}
@@ -37,7 +42,7 @@ const RestDesc = props => {
       <Modal.Actions>
  
         <Button color='green' positive> 
-          <ReservationForm status={props.status} id={id} onClick={() => setOpen(false)}/>
+          <ReservationForm closeDesc={closeDesc} status={props.status} id={id} onClick={() => setOpen(false)}/>
         </Button>
 
         <Button color='red' onClick={() => setOpen(false)}>
