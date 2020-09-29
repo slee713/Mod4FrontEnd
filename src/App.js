@@ -25,14 +25,14 @@ const status = () => {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar 
-            logged_in={logged_in}
-            status={status}
-            baseUrl={baseUrl} 
-            restUrl={restUrl} 
-            loginUrl={loginUrl} 
-          />
-          
+              <Navbar 
+              // {...routerProps}
+              logged_in={logged_in}
+              status={status}
+              baseUrl={baseUrl} 
+              restUrl={restUrl} 
+              loginUrl={loginUrl} 
+              />
           <Switch>
             <Route exact path="/" render={(routerProps) =>  <RestContainer {...routerProps} status={status} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>
             <Route exact path="/account" render={(routerProps) =>  <Account {...routerProps} status={status} baseUrl={baseUrl} restUrl={restUrl} loginUrl={loginUrl}/>}/>

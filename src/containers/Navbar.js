@@ -4,15 +4,17 @@ import Login from '../components/Login'
 import Signup from '../components/SignUp'
 import './Navbar.css'
 import '../yummy.png'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom'
 
 
 const Navbar = props => {
     
     
+    
     const logout = () => {
         localStorage.clear() 
         props.status()
+        props.history.push('/')
     }
 
 
@@ -40,4 +42,4 @@ const Navbar = props => {
     
 }
 
-export default Navbar
+export default withRouter(Navbar)
