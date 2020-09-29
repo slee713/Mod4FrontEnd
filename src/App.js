@@ -4,7 +4,7 @@ import './App.css';
 import RestContainer from './containers/RestContainer'
 import Navbar from './containers/Navbar'
 import Account from './components/Account'
-import Reservation from './components/Reservation'
+import Reservation from './containers/Reservation'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import {useState} from 'react'
 

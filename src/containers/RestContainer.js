@@ -16,19 +16,19 @@ class RestContainer extends Component {
         cuisineRest: [],
     }
 
-    componentDidMount(){
-        let pages = [0, 20, 40,60, 80]      
-        for (let i=0; i < pages.length; i++) {
-            fetch(this.props.restUrl+`?start=${pages[i]}`)
-            .then(res => res.json())
-            .then(restaurants => {
-                this.setState({
-                    restaurants : [ ...this.state.restaurants, ...restaurants],
-                    displayRestaurants: [ ...this.state.restaurants, ...restaurants],
-                })
-            })
-        }  
-    }
+    // componentDidMount(){
+    //     let pages = [0, 20, 40,60, 80]      
+    //     for (let i=0; i < pages.length; i++) {
+    //         fetch(this.props.restUrl+`?start=${pages[i]}`)
+    //         .then(res => res.json())
+    //         .then(restaurants => {
+    //             this.setState({
+    //                 restaurants : [ ...this.state.restaurants, ...restaurants],
+    //                 displayRestaurants: [ ...this.state.restaurants, ...restaurants],
+    //             })
+    //         })
+    //     }  
+    // }
 
     search = (e) => {
         e.preventDefault()
