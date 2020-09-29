@@ -123,6 +123,20 @@ class RestContainer extends Component {
             }
         }
     }
+
+    searchResults = (lat, lng) => {
+        let pages = [0, 20, 40,60, 80]      
+            for (let i=0; i < pages.length; i++) {
+                fetch(this.props.restUrl+`?start=${pages[i]}&lat=${lat}&long=${lng}`)
+                .then(res => res.json())
+                .then(restaurants => {
+                    this.setState({
+                        restaurants : [ ...this.state.restaurants, ...restaurants],
+                        displayRestaurants: [ ...this.state.restaurants, ...restaurants],
+                    })
+                })
+            }  
+    }
    
 
     render(){
@@ -156,7 +170,7 @@ class RestContainer extends Component {
                                 nextPage={this.nextPage}
                                 previousPage={this.previousPage}
                             />  :
-                             <Map restaurants={this.state.cuisines>0? this.state.cuisineRest : this.state.displayRestaurants}/>}
+                             <Map searchResults={this.searchResults} restaurants={this.state.cuisines>0? this.state.cuisineRest : this.state.displayRestaurants}/>}
                         </div>
                     </div>
             </div>

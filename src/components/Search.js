@@ -36,6 +36,7 @@ function Search (props) {
                     try{
                         const results = await getGeocode({address})
                         const {lat, lng} = await getLatLng(results[0])
+                        props.searchResults(lat, lng)
                         props.panTo({lat, lng})
                     } catch (error) {
                         console.log('error!')
