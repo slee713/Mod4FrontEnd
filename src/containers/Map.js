@@ -36,7 +36,7 @@ const center = {
 
 export default function Map(props) {
     const {isLoaded, loadError} = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+        googleMapsApiKey: "AIzaSyAqOoEyh98vsAdgV2Rl4N7v9agnavbl_k0",
         libraries
     })
     const [selected, setSelected] = React.useState(null)
