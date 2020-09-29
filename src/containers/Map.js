@@ -6,6 +6,9 @@ import {
     InfoWindow
 } from '@react-google-maps/api'
 import RestDesc from '../components/RestDesc'
+
+
+
 const libraries = ["places"]
 const mapContainerStyle = {
     width: '80vw',
