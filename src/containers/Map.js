@@ -36,7 +36,7 @@ const center = {
 
 export default function Map(props) {
     const {isLoaded, loadError} = useLoadScript({
-        googleMapsApiKey: "AIzaSyAqOoEyh98vsAdgV2Rl4N7v9agnavbl_k0",
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries
     })
     const [selected, setSelected] = React.useState(null)
@@ -105,7 +105,7 @@ function Search () {
                     disabled={!ready}
                     placeholder ="Search For Location"
                 />
-                <ComboboxPopover classname="search">
+                <ComboboxPopover >
                     <ComboboxList>
                     {status === "OK" && 
                     data.map(({id, description}) => (
