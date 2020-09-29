@@ -6,7 +6,8 @@ import {
     InfoWindow
 } from '@react-google-maps/api'
 import RestDesc from '../components/RestDesc'
-import usePlacesAutoComplete, {
+
+import usePlacesAutocomplete, {
     getGeocode,
     getLatLng
 } from 'use-places-autocomplete'
@@ -19,12 +20,12 @@ import {
     ComboboxOption
 } from '@reach/combobox'
 import '@reach/combobox/styles.css'
-
+// import Search from '../components/Search'
 
 const libraries = ["places"]
 const mapContainerStyle = {
-    width: '80vw',
-    height: '80vh'
+    width: '60vw',
+    height: '60vh'
 }
 const center = {
     lat: 38.907192,
@@ -35,7 +36,7 @@ const center = {
 
 export default function Map(props) {
     const {isLoaded, loadError} = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLES_MAPS_API_KEY,
+        googleMapsApiKey: "AIzaSyAqOoEyh98vsAdgV2Rl4N7v9agnavbl_k0",
         libraries
     })
     const [selected, setSelected] = React.useState(null)
@@ -82,15 +83,14 @@ export default function Map(props) {
     )
 }
 
-
-function Search() {
+function Search () {
     const {
         ready,
         value,
         suggestions: {status, data},
         setValue,
-        clearSuggestion
-    } = usePlacesAutoComplete({
+        clearSuggestions
+    } = usePlacesAutocomplete({
         requestOptions:{
             locations: {lat: () => 38.907192, lng: () => -77.036873},
             radius: 10 * 1000
@@ -105,11 +105,15 @@ function Search() {
                     disabled={!ready}
                     placeholder ="Search For Location"
                 />
-                <ComboboxPopover>
-                    {status === "OK" && data.map(({id, description}) =>
-                        <ComboboxOption key={id} value={description}/>)}
+                <ComboboxPopover classname="search">
+                    <ComboboxList>
+                    {status === "OK" && 
+                    data.map(({id, description}) => (
+                        <ComboboxOption key={id} value={description}/>
+                    ))}
+                    </ComboboxList>
                 </ComboboxPopover>
-
             </Combobox>
-        </div>)
+        </div>
+    )
 }

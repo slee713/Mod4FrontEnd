@@ -1,6 +1,6 @@
 // import React from 'react'
 // import './Search.css'
-// import usePlacesAutoComplete, {
+// import usePlacesAutocomplete, {
 //     getGeocode,
 //     getLatLng
 // } from 'use-places-autocomplete'
@@ -14,14 +14,14 @@
 // } from '@reach/combobox'
 // import '@reach/combobox/styles.css'
 
-// const Search = props => {
+// function Search () {
 //     const {
 //         ready,
 //         value,
 //         suggestions: {status, data},
 //         setValue,
-//         clearSuggestion
-//     } = usePlacesAutoComplete({
+//         clearSuggestions
+//     } = usePlacesAutocomplete({
 //         requestOptions:{
 //             locations: {lat: () => 38.907192, lng: () => -77.036873},
 //             radius: 10 * 1000
@@ -36,13 +36,17 @@
 //                     disabled={!ready}
 //                     placeholder ="Search For Location"
 //                 />
-//                 <ComboboxPopover>
-//                     {status === "OK" && data.map(({id, description}) =>
-//                         <ComboboxOption key={id} value={description}/>)}
+//                 <ComboboxPopover classname="search">
+//                     <ComboboxList>
+//                     {status === "OK" && 
+//                     data.map(({id, description}) => (
+//                         <ComboboxOption key={id} value={description}/>
+//                     ))}
+//                     </ComboboxList>
 //                 </ComboboxPopover>
-
 //             </Combobox>
-//         </div>)
+//         </div>
+//     )
 // }
 
 // export default Search
