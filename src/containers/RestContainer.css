@@ -1,21 +1,34 @@
 .restContainer{
-    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px black;
+    margin-top:40px;
+}
+
+.main {
+    padding-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 .sort {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    position: fixed;
-    z-index: 1;
-    background: yellow;
-    width: 100%;
-    margin-top: 880px;
+    justify-content: space-around;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .body{
     display: flex;
-    flex-direction: row; 
+    flex-direction: column; 
+    justify-content: center;
 }
 
 .filter{
@@ -27,7 +40,3 @@
     text-align: left
 }
 
-.test {
-    display: flex;
-    flex-direction: column;
-}

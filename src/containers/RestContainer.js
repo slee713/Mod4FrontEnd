@@ -121,19 +121,23 @@ class RestContainer extends Component {
             <div className="restContainer">
                 
                 
-                <div>
-                    <Search search={this.search}/>
-                </div>
+                
+                <Search search={this.search}/>
+                
                 { true ? 
-                    <div>
-                        <div className="sort">
-                            <Sort sortBy={this.sortBy} />
-                            <button onClick={this.previousPage} > Previous Page</button>
-                            <button onClick={() => this.nextPage()}>Next Page</button>
-                        </div>
-                        <div className='body'>
+                    <div className="main">
+                        <div className="filter">
                             <div className='filter'>
                             <Filter cuisineFilter={this.cuisineFilter}/>
+                            </div>
+                        </div>
+                        <div className='body'>
+                            <div className = "sort">
+                                <Sort sortBy={this.sortBy} />
+                                <div className="buttons">
+                                    <button onClick={this.previousPage} > Previous Page</button>
+                                    <button onClick={() => this.nextPage()}>Next Page</button>
+                                </div>
                             </div>
                             {this.state.loading ? 
                             <div> Loading </div>
