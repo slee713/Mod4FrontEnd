@@ -73,12 +73,12 @@ class RestContainer extends Component {
 
     nextPage=() => {
         let start = this.state.start
-        let cuisine = this.state.cuisines
+        let cuisines = this.state.cuisines
         let cuisineRest = this.state.cuisineRest
-        if (cuisine>0 && cuisineRest.count > start || cuisine == 0){
+        if (cuisineRest.length > start + 20 || cuisines === 0){
             start = start + 20
             this.setState({ start })
-        }
+        } 
     }
 
     previousPage = () => {
