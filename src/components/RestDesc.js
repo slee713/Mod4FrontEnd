@@ -12,45 +12,45 @@ const RestDesc = props => {
  
     return(
         <Modal
-      onClose={() => setOpen(false)}
-      onOpen={() => setOpen(true)}
-      open={open}
-      trigger={<Button>More Info</Button>}
-    >
-      <Modal.Header>{name}</Modal.Header>
-      <Modal.Content image>
-        <Image size='medium' src={featured_img ? featured_img : props.image} wrapped />
-        <Modal.Description>
-          {/* <Header>Default Profile Image</Header> */}
-          <p>
-            Cuisine: {cuisines}
-          </p>
-          <p>
-              Price range: {price_range}
-          </p>
-          <p>
-              Rating: {rating}
-          </p>
-          <p>
-            {location.address}
-          </p>
-          <p>
-              Phone Number: {phone_numbers}
-          </p>
-        </Modal.Description>
-      </Modal.Content>
-      <Modal.Actions>
- 
-        <Button color='green' positive> 
-          <ReservationForm closeDesc={closeDesc} status={props.status} id={id} onClick={() => setOpen(false)}/>
-        </Button>
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
+          trigger={<Button>More Info</Button>}
+        >
+          <Modal.Header>{name}</Modal.Header>
+          <Modal.Content image>
+            <Image size='medium' src={featured_img ? featured_img : props.image} wrapped />
+            <Modal.Description>
+              {/* <Header>Default Profile Image</Header> */}
+              <p>
+                Cuisine: {cuisines}
+              </p>
+              <p>
+                  Price range: {price_range}
+              </p>
+              <p>
+                  Rating: {rating}
+              </p>
+              <p>
+                {location.address}
+              </p>
+              <p>
+                  Phone Number: {phone_numbers}
+              </p>
+            </Modal.Description>
+          </Modal.Content>
+          <Modal.Actions>
+    
+            <Button color='green' positive> 
+              <ReservationForm closeDesc={closeDesc} status={props.status} id={id} onClick={() => setOpen(false)}/>
+            </Button>
 
-        <Button color='red' onClick={() => setOpen(false)}>
-          Close
-        </Button>
-        
-      </Modal.Actions>
-    </Modal>
+            <Button color='red' onClick={() => setOpen(false)}>
+              Close
+            </Button>
+            
+          </Modal.Actions>
+      </Modal>
     )
 }
 export default RestDesc

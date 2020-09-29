@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Card} from 'semantic-ui-react'
-
+import EditResForm from './EditResForm'
 
 const ReservationCard = props => {
     const [restName, setRestName] = useState("Placeholder")
@@ -14,6 +14,7 @@ const ReservationCard = props => {
     // }, [])
 
     const deleteReservation = () => {
+       
         let config = {
             method: "DELETE",
             headers: {
@@ -22,7 +23,10 @@ const ReservationCard = props => {
         }
         fetch(props.baseUrl+`reservations/${id}`, config)
         .then(res => res.json())
-        .then(res => alert(res.message))
+        .then(res => {
+            alert(res.message)
+            props.delete(id)
+        }) 
     }
 
     return(
@@ -36,7 +40,6 @@ const ReservationCard = props => {
                     <p>Time: {`${hour}:00`}</p>
                     <p>Party Size: {party}</p>
                     <div>
-                        <button>Edit</button>
                         <button onClick={deleteReservation}>Delete</button>
                     </div>
                 </Card.Description>
