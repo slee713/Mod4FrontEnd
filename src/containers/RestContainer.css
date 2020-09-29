@@ -40,3 +40,11 @@
     text-align: left
 }
 
+.image-div{
+    width: auto;
+    height: 600px;
+    background-image: url('../table_image.jpg'); 
+    background-repeat: no-repeat;
+    background-size:cover;
+    opacity: 0.9 
+ }

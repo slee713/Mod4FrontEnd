@@ -1,8 +1,9 @@
-.image-div{
-   width: auto;
-   height: 600px;
-   background-image: url('../table_image.jpg'); 
-   background-repeat: no-repeat;
-   background-size:cover;
-   opacity: 0.9 
+.search {
+   position: absolute;
+   top: 1rem;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 100%;
+   max-width: 800px;
+   z-index: 10;
 }

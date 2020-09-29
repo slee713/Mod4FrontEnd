@@ -131,7 +131,9 @@ class RestContainer extends Component {
         return(
             
             <div className="restContainer">
-                <Search search={this.search}/>
+                <div className="image-div">
+
+                </div>
                     <div className="main">
                         <div className="filter">
                             <div className='filter'>
