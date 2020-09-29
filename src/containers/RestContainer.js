@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import RestCollection from './RestCollection'
-import RestMap from './RestMap'
+import Map from './Map'
 import Sort from '../components/Sort'
 import './RestContainer.css'
 import Search from '../components/Search'
@@ -147,14 +147,14 @@ class RestContainer extends Component {
                                 </div>
                                     <button onClick={this.changeView}>{this.state.map ? "Map View" : "List View"} </button>
                             </div>
-                             { !true ? 
+                             { this.state.map ? 
                             <RestCollection 
                                 status={this.props.status}
                                 restaurants={this.displayTwenty()}
                                 nextPage={this.nextPage}
                                 previousPage={this.previousPage}
                             />  :
-                             <RestMap />}
+                             <Map restaurants={this.state.cuisines>0? this.state.cuisineRest : this.state.displayRestaurants}/>}
                         </div>
                     </div>
             </div>
