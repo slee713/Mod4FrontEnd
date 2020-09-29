@@ -3,25 +3,42 @@ import {Card} from 'semantic-ui-react'
 
 
 const ReservationCard = props => {
-    const [restName, setRestName] = useState("")
+    const [restName, setRestName] = useState("Placeholder")
 
-    const { date, hour, table_id, party } = props.reservation
+    const { id ,date, hour, table_id, party } = props.reservation
 
-    useEffect(()=> {
-        fetch(props.baseUrl+'tables/'+table_id)
+    // useEffect(()=> {
+    //     fetch(props.baseUrl+'tables/'+table_id)
+    //     .then(res => res.json())
+    //     .then(data => setRestName(data.name))
+    // }, [])
+
+    const deleteReservation = () => {
+        let config = {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`
+            }
+        }
+        fetch(props.baseUrl+`reservations/${id}`, config)
         .then(res => res.json())
-        .then(data => setRestName(data.name))
-    }, [])
+        .then(res => alert(res.message))
+    }
 
     return(
         
         <Card centered>
             <Card.Content>
                 <Card.Header>{restName}</Card.Header>
-                <Card.Meta>Date: {date}</Card.Meta>
+                
                 <Card.Description>
+                    <p>Date: {date}</p>
                     <p>Time: {`${hour}:00`}</p>
                     <p>Party Size: {party}</p>
+                    <div>
+                        <button>Edit</button>
+                        <button onClick={deleteReservation}>Delete</button>
+                    </div>
                 </Card.Description>
             </Card.Content>
         </Card>  

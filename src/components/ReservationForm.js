@@ -13,7 +13,6 @@ let reservationUrl = baseUrl + 'reservations'
 
 const ReservationForm = props => {
     const [open, setOpen] = React.useState(false)
-    const [options, setOptions] = React.useState([])
     const [date , setDate] = React.useState('')
     const [partySize, setPartySize] = React.useState(0)
     const [timeslots, setTimeSlots] = React.useState([])
