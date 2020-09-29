@@ -4,7 +4,7 @@ const Sort = props => {
     return (
         <div>
             <label>Sory By:</label>
-            <select onChange={(e)=> props.sortBy(e.target.value)}>
+            <select onChange={(e)=> props.sortBy(e.target.value)} value={props.sort}>
                 <option disable selected value> -- Select Option -- </option>
                 <option value="ratingASC">Rating (Lowest to Highest)</option>
                 <option value="ratingDESC">Rating (Highest to Lowest)</option>

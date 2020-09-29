@@ -14,23 +14,21 @@ class RestContainer extends Component {
         sort: "",
         cuisines: 0,
         cuisineRest: [],
-        loading: true
     }
 
-    // componentDidMount(){
-    //     let pages = [0, 20, 40,60, 80]      
-    //     for (let i=0; i < pages.length; i++) {
-    //         fetch(this.props.restUrl+`?start=${pages[i]}`)
-    //         .then(res => res.json())
-    //         .then(restaurants => {
-    //             this.setState({
-    //                 restaurants : [ ...this.state.restaurants, ...restaurants],
-    //                 displayRestaurants: [ ...this.state.restaurants, ...restaurants],
-    //                 loading:false
-    //             })
-    //         })
-    //     }  
-    // }
+    componentDidMount(){
+        let pages = [0, 20, 40,60, 80]      
+        for (let i=0; i < pages.length; i++) {
+            fetch(this.props.restUrl+`?start=${pages[i]}`)
+            .then(res => res.json())
+            .then(restaurants => {
+                this.setState({
+                    restaurants : [ ...this.state.restaurants, ...restaurants],
+                    displayRestaurants: [ ...this.state.restaurants, ...restaurants],
+                })
+            })
+        }  
+    }
 
     search = (e) => {
         e.preventDefault()
@@ -38,7 +36,12 @@ class RestContainer extends Component {
     }
 
     sortBy = (sort) => {
-        let displayRestaurants = this.state.restaurants
+        let cuisines = this.state.cuisines
+        let displayRestaurants
+        if (cuisines === 0)
+            displayRestaurants = this.state.restaurants
+        if (cuisines > 0)
+            displayRestaurants = this.state.cuisineRest
         
         switch (sort){
             case "ratingASC":
@@ -60,14 +63,19 @@ class RestContainer extends Component {
                 displayRestaurants = displayRestaurants.sort((a,b) => b.name.localeCompare(a.name))
                 break;
         }
-        this.setState({displayRestaurants, sort})
+        this.setState({
+            [cuisines>0? "cuisineRest": "displayRestaurants"]: displayRestaurants ,
+            sort
+        })
     }
 
     
 
     nextPage=() => {
         let start = this.state.start
-        if (start < 80){
+        let cuisine = this.state.cuisines
+        let cuisineRest = this.state.cuisineRest
+        if (cuisine>0 && cuisineRest.count > start || cuisine == 0){
             start = start + 20
             this.setState({ start })
         }
@@ -83,8 +91,9 @@ class RestContainer extends Component {
 
     displayTwenty = () => {
         let cuisines = this.state.cuisines
-        if (cuisines === 0)
+        if (cuisines === 0){
             return this.state.displayRestaurants.slice(this.state.start, this.state.start + 20)
+        }
         else if (cuisines>0){
             return this.state.cuisineRest.slice(this.state.start, this.state.start + 20)
         }
@@ -92,9 +101,8 @@ class RestContainer extends Component {
     
     cuisineFilter = (value) => {
         console.log(value)
-        this.setState({loading: true})
         if (value > 0){
-            this.setState({cuisineRest: []})
+            this.setState({cuisineRest: [], sort: "", start: 0})
             let pages = [0, 20, 40, 60, 80]
             for (let i=0; i < pages.length; i++) {
                 fetch(this.props.restUrl+`?cuisines=${value}&start=${pages[i]}`)
@@ -106,9 +114,6 @@ class RestContainer extends Component {
                     })
                 })
             }
-            this.setState({
-                loading: false
-            })
         }
     }
    
@@ -133,21 +138,19 @@ class RestContainer extends Component {
                         </div>
                         <div className='body'>
                             <div className = "sort">
-                                <Sort sortBy={this.sortBy} />
+                                <Sort sortBy={this.sortBy} sort={this.state.sort}/>
                                 <div className="buttons">
                                     <button onClick={this.previousPage} > Previous Page</button>
                                     <button onClick={() => this.nextPage()}>Next Page</button>
                                 </div>
                             </div>
-                            {this.state.loading ? 
-                            <div> Loading </div>
-                            :
+                            
                             <RestCollection 
                                 status={this.props.status}
                                 restaurants={this.displayTwenty()}
                                 nextPage={this.nextPage}
                                 previousPage={this.previousPage}
-                            /> }
+                            /> 
                         </div>
                     </div>
                 :
