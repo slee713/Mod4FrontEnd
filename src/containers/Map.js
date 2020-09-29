@@ -46,13 +46,18 @@ export default function Map(props) {
         mapRef.current = map
     }, [])
 
+    const panTo = React.useCallback(({lat,lng}) => {
+        mapRef.current.panTo({lat, lng})
+        mapRef.current.setZoom(14)
+    }, [])
+
     if(loadError) return "Error Loading Map"
     if(!isLoaded) return "Loading Maps"
     
     
     return(
         <div>
-            <Search />
+            <Search panTo={panTo}/>
             <GoogleMap 
                 mapContainerStyle={mapContainerStyle} 
                 zoom={10}
@@ -83,7 +88,7 @@ export default function Map(props) {
     )
 }
 
-function Search () {
+function Search ({panTo}) {
     const {
         ready,
         value,
@@ -98,7 +103,19 @@ function Search () {
     })
     return (
         <div className="search">
-            <Combobox onSelect={(address)=> console.log(address)}>
+            <Combobox onSelect={
+                async (address)=> {
+                    setValue(address, false)
+                    clearSuggestions()
+                    try{
+                        const results = await getGeocode({address})
+                        const {lat, lng} = await getLatLng(results[0])
+                        panTo({lat, lng})
+                    } catch (error) {
+                        console.log('error!')
+                    }
+                
+            }}>
                 <ComboboxInput
                     value={value}
                     onChange={(e)=> setValue(e.target.value)}
