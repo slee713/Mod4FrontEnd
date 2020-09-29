@@ -14,6 +14,7 @@ class RestContainer extends Component {
         sort: "",
         cuisines: 0,
         cuisineRest: [],
+        map: false,
     }
 
     // componentDidMount(){
@@ -33,6 +34,12 @@ class RestContainer extends Component {
     search = (e) => {
         e.preventDefault()
         // make fetch to resturl
+    }
+
+    changeView = () => {
+        this.setState({
+            map: !this.state.map
+        })
     }
 
     sortBy = (sort) => {
@@ -129,7 +136,7 @@ class RestContainer extends Component {
                 
                 <Search search={this.search}/>
                 
-                { true ? 
+               
                     <div className="main">
                         <div className="filter">
                             <div className='filter'>
@@ -143,19 +150,20 @@ class RestContainer extends Component {
                                     <button onClick={this.previousPage} > Previous Page</button>
                                     <button onClick={() => this.nextPage()}>Next Page</button>
                                 </div>
+                                    <button onClick={this.changeView}>{this.state.map ? "Map View" : "List View"} </button>
                             </div>
-                            
+                             { !true ? 
                             <RestCollection 
                                 status={this.props.status}
                                 restaurants={this.displayTwenty()}
                                 nextPage={this.nextPage}
                                 previousPage={this.previousPage}
-                            /> 
+                            />  :
+                             <RestMap />}
+            
                         </div>
                     </div>
-                :
-                <RestMap />}
-            
+               
             </div>
         )
     
