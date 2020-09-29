@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import RestCard from '../components/RestCard'
 import './RestCollection.css'
 

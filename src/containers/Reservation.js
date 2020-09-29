@@ -21,7 +21,7 @@ const Reservation = props => {
         <div className="reservationContainer">
             <h1>My Reservations</h1>
             {reservations.map(r => 
-                <ReservationCard key={r.id} reservation={r}/>
+                <ReservationCard key={r.id} reservation={r} baseUrl={props.baseUrl}/>
                 )}
         </div>
     )

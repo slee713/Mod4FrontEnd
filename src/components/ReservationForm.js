@@ -1,9 +1,9 @@
 import React from 'react'
-import { Header, Image, Modal, ButtonOr } from 'semantic-ui-react'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Modal} from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 import Login from './Login'
 import SignUp from './SignUp'
-import Signup from './SignUp'
+
 
 
 let baseUrl= "http://localhost:3000/api/v1/"
