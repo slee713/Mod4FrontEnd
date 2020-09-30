@@ -28,3 +28,7 @@ code {
    width: 100%;
    z-index:10;
 }
+
+.btn {
+  background-color: #FC2A13;
+}

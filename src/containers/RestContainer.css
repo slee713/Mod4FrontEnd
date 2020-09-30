@@ -42,9 +42,10 @@
 
 .image-div{
     width: auto;
-    height: 600px;
-    background-image: url('../table_image.jpg'); 
+    height: 450px;
+    background: url('../rest_1.jpg') center; 
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
+    /* background-position:  */
     opacity: 0.9 
  }

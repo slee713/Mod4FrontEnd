@@ -159,13 +159,13 @@ class RestContainer extends Component {
                                 <Sort sortBy={this.sortBy} sort={this.state.sort}/>
                                 <div className="buttons">
                                     {this.state.list ? <Button.Group>
-                                        <Button onClick={this.previousPage} > Previous Page</Button>
-                                        <Button onClick={() => this.nextPage()}>Next Page</Button>
+                                        <Button className='btn' onClick={this.previousPage} > Previous Page</Button>
+                                        <Button className='btn' onClick={() => this.nextPage()}>Next Page</Button>
                                     </Button.Group> : null}
                                 </div>
                                     <Button.Group>
-                                        <Button onClick={() => this.changeView(true)}>List</Button>
-                                        <Button onClick={() => this.changeView(false)}>Map</Button>
+                                        <Button className='btn' onClick={() => this.changeView(true)}>List</Button>
+                                        <Button className='btn' onClick={() => this.changeView(false)}>Map</Button>
                                     </Button.Group>
                             </div>
                              { this.state.list ? 
