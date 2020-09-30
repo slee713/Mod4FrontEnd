@@ -3,8 +3,8 @@ import RestCollection from './RestCollection'
 import Map from './Map'
 import Sort from '../components/Sort'
 import './RestContainer.css'
-import Search from '../components/Search'
 import Filter from '../components/Filter'
+import { Button } from 'semantic-ui-react'
 
 class RestContainer extends Component {
     state={
@@ -14,7 +14,7 @@ class RestContainer extends Component {
         sort: "",
         cuisines: 0,
         cuisineRest: [],
-        map: false,
+        list: false,
         lat: 38.907192,
         lng: -77.036873
     }
@@ -38,9 +38,9 @@ class RestContainer extends Component {
         // make fetch to resturl
     }
 
-    changeView = () => {
+    changeView = (value) => {
         this.setState({
-            map: !this.state.map
+            list: value
         })
     }
 
@@ -163,12 +163,17 @@ class RestContainer extends Component {
                                 <Filter cuisineFilter={this.cuisineFilter}/>
                                 <Sort sortBy={this.sortBy} sort={this.state.sort}/>
                                 <div className="buttons">
-                                    <button onClick={this.previousPage} > Previous Page</button>
-                                    <button onClick={() => this.nextPage()}>Next Page</button>
+                                    {this.state.list ? <Button.Group>
+                                        <Button onClick={this.previousPage} > Previous Page</Button>
+                                        <Button onClick={() => this.nextPage()}>Next Page</Button>
+                                    </Button.Group> : null}
                                 </div>
-                                    <button onClick={this.changeView}>{this.state.map ? "Map View" : "List View"} </button>
+                                    <Button.Group>
+                                        <Button onClick={() => this.changeView(true)}>List</Button>
+                                        <Button onClick={() => this.changeView(false)}>Map</Button>
+                                    </Button.Group>
                             </div>
-                             { this.state.map ? 
+                             { this.state.list ? 
                             <RestCollection 
                                 status={this.props.status}
                                 restaurants={this.displayTwenty()}

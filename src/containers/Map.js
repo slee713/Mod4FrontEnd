@@ -13,8 +13,8 @@ import Search from '../components/Search'
 
 const libraries = ["places"]
 const mapContainerStyle = {
-    width: '60vw',
-    height: '60vh'
+    width: '100vw',
+    height: '100vh'
 }
 const center = {
     lat: 38.907192,

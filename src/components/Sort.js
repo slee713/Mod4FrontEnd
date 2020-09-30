@@ -3,8 +3,8 @@ import React from 'react'
 const Sort = props => {
     return (
         <div>
-            <label>Sory By:</label>
-            <select onChange={(e)=> props.sortBy(e.target.value)} value={props.sort}>
+            <p>Sort By:</p>
+            <select onChange={(e)=> props.sortBy(e.target.value)} >
                 <option disabled selected value> -- Select Option -- </option>
                 <option value="ratingASC">Rating (Lowest to Highest)</option>
                 <option value="ratingDESC">Rating (Highest to Lowest)</option>
