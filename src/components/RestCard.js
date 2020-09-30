@@ -28,9 +28,9 @@ const RestCard = (props) => {
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <a>
+      <div className='more-info-btn-div'>
         <RestDesc status={props.status} restaurant={props.restaurant} image={props.image}/>
-      </a>
+      </div>
     </Card.Content>
   </Card>
     )

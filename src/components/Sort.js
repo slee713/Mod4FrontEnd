@@ -2,8 +2,8 @@ import React from 'react'
 
 const Sort = props => {
     return (
-        <div>
-            <label>Sort By:</label>
+        <div className='filter-rest-div'>
+            <label>Sort By: </label>
             <select onChange={(e)=> props.sortBy(e.target.value)} >
                 <option disabled selected value> -- Select Option -- </option>
                 <option value="ratingASC">Rating (Lowest to Highest)</option>

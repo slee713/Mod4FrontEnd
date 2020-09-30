@@ -55,6 +55,7 @@ const Account = props => {
              address={address} setAddress={setAddress}
              email={email} setEmail={setEmail}
              />
+             <br></br>
              <Button onClick={() => deleteAccount()}>Delete Account</Button>
         </div>
     )

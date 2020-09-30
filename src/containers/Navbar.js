@@ -21,12 +21,12 @@ const Navbar = props => {
 
         return(
             <div className="navbar">
-                <Link to="/" className="link">MyApp</Link>
+                <Link to="/" className="link"><img className='logo' src={require('../delish.png')}/></Link>
                 {props.logged_in ?
                 <div className="loggedIn">
-                    <Link to="/account" >My Account</Link>
-                    <Link to="/reservations" >Reservations</Link>
-                    <p onClick={logout} >Logout</p>
+                    <Link to="/account" className='navbar-links'>My Account</Link>
+                    <Link to="/reservations" className='navbar-links'>Reservations</Link>
+                    <p onClick={logout} className='navbar-links'>Logout</p>
                 </div>
                 :
                 <div className="loggedOut">
