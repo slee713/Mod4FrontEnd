@@ -34,7 +34,7 @@ const EditUser = props => {
     }
 
     return(
-        <div className='form-div'>
+        <div className='form-div' style={{'width': '50%'}}>
             <Modal
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
@@ -43,23 +43,23 @@ const EditUser = props => {
             >
                 <Modal.Header>Update Information</Modal.Header>
                     <Modal.Content>
-                        <Form className='form'>
-                            <Form.Group className='form-input'>
+                        <Form >
+                            <Form.Group >
                             <Form.Input label='Username' placeholder='Username' name="username" value={props.username} onChange={(e) => props.setUsername(e.target.value)}/>
                             </Form.Group>
-                            <Form.Group className='form-input'>
+                            <Form.Group >
                                     <Form.Input label='First Name' placeholder='First Name' name="first_name" value={props.first_name} onChange={(e) => props.setFirstName(e.target.value)}/>
                             </Form.Group>
-                            <Form.Group className='form-input'>
+                            <Form.Group >
                                     <Form.Input label='Last Name' placeholder='Last Name' name="last_name" value={props.last_name} onChange={(e) => props.setLastName(e.target.value)}/>
                             </Form.Group>
-                            <Form.Group className='form-input'>
+                            <Form.Group >
                                     <Form.Input label='Email' placeholder='Email' name="email" value={props.email} onChange={(e) => props.setEmail(e.target.value)}/>
                             </Form.Group>
-                            <Form.Group className='form-input'>
-                                    <Form.Input label='Address' placeholder='Address' name="address" value={props.address} onChange={(e) => props.setAddress(e.target.value)}/>
+                            <Form.Group >
+                                    <Form.TextArea label='Address' placeholder='Address' name="address" value={props.address} onChange={(e) => props.setAddress(e.target.value)}/>
                             </Form.Group>
-                            <Form.Group className='form-input'>
+                            <Form.Group >
                                 <Button onClick={(e) => updateUser(e)}>Update Account</Button>
                             </Form.Group>
                         </Form>

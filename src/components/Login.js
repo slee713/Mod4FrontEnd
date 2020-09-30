@@ -37,26 +37,18 @@ const Login = props => {
       <Modal.Header>Login</Modal.Header>
       <Modal.Content>
         
-        {/* <div>
-            <form onSubmit = {(e) => login(e)}>
-                <label for="username">Username</label>
-                <input id="username" type="text" name='username'/>
-                <label for="password">Password</label>
-                <input id="password" type="password" name='password'/>
-                <button type="submit">Login</button>
-            </form>
-        </div> */}
-        <Form onSubmit={(e) => login(e)}>
-          <Form.Field required>
-            <label for="username">Username</label>
-            <input id="username" placeholder='username' name="username"/>
-          </Form.Field>
-          <Form.Field required>
-            <label for="password">Password</label>
-            <input id="password" type="password" name='password'/>
-          </Form.Field>
-          <Button type='submit'>Submit</Button>
-        </Form>
+          <Form onSubmit={(e) => login(e)} ho>
+            <Form.Field required>
+              <label for="username">Username</label>
+              <input id="username" placeholder='username' name="username"/>
+            </Form.Field>
+            <Form.Field required>
+              <label for="password">Password</label>
+              <input id="password" type="password" name='password'/>
+            </Form.Field>
+            <Button type='submit'>Submit</Button>
+          </Form>
+        
         
       </Modal.Content>
       <Modal.Actions>
