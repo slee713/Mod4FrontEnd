@@ -34,7 +34,7 @@ const EditUser = props => {
     }
 
     return(
-        <div className='form-div' style={{'width': '50%'}}>
+        <div className='form-div' >
             <Modal
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
