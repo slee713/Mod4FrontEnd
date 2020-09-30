@@ -51,7 +51,7 @@ export default function Map(props) {
             <Search searchResults={props.searchResults} panTo={panTo}/>
             <GoogleMap 
                 mapContainerStyle={mapContainerStyle} 
-                zoom={10}
+                zoom={13}
                 center={center}
                 onLoad={onMapLoad}
             >
