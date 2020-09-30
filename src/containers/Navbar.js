@@ -12,6 +12,7 @@ const Navbar = props => {
     
     
     const logout = () => {
+        console.log(process.env.REACT_APP_GOOGLE_MAPS_API_KEY)
         localStorage.clear() 
         props.status()
         props.history.push('/')

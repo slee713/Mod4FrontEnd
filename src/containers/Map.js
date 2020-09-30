@@ -7,18 +7,7 @@ import {
 } from '@react-google-maps/api'
 import RestDesc from '../components/RestDesc'
 
-import usePlacesAutocomplete, {
-    getGeocode,
-    getLatLng
-} from 'use-places-autocomplete'
 
-import {
-    Combobox,
-    ComboboxInput,
-    ComboboxPopover,
-    ComboboxList,
-    ComboboxOption
-} from '@reach/combobox'
 import '@reach/combobox/styles.css'
 import Search from '../components/Search'
 
@@ -32,11 +21,13 @@ const center = {
     lng: -77.036873
 }
 
+const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env
+
 
 
 export default function Map(props) {
     const {isLoaded, loadError} = useLoadScript({
-        googleMapsApiKey: "AIzaSyAqOoEyh98vsAdgV2Rl4N7v9agnavbl_k0",
+        googleMapsApiKey: REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries
     })
     const [selected, setSelected] = React.useState(null)
