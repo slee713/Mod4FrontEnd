@@ -109,7 +109,6 @@ class RestContainer extends Component {
     }
     
     cuisineFilter = (value) => {
-        console.log(value)
         if (value > 0){
             this.setState({cuisineRest: [], sort: "", start: 0})
             let pages = [0, 20, 40, 60, 80]
@@ -127,7 +126,8 @@ class RestContainer extends Component {
     }
 
     searchResults = (lat, lng) => {
-        let pages = [0, 20, 40,60, 80]      
+        let pages = [0, 20, 40,60, 80]
+        this.setState({restaurants: [], displayRestaurants: [], lat, lng, cuisines: 0})      
             for (let i=0; i < pages.length; i++) {
                 fetch(this.props.restUrl+`?start=${pages[i]}&lat=${lat}&long=${lng}`)
                 .then(res => res.json())
@@ -155,7 +155,7 @@ class RestContainer extends Component {
                    
                     <div className='body'>
                             <div className = "sort">
-                                <Filter cuisineFilter={this.cuisineFilter}/>
+                                <Filter cuisines={this.state.cuisines} cuisineFilter={this.cuisineFilter}/>
                                 <Sort sortBy={this.sortBy} sort={this.state.sort}/>
                                 <div className="buttons">
                                     

@@ -17,8 +17,9 @@ function Filter(props){
       <div >
         <label>Filter By Cuisine</label>
         
-          <select onChange={(e) => handleChange(e.target.value)}>
+          <select onChange={(e) => handleChange(e.target.value)} value={props.cuisines}>
             <option disabled selected value>-- Select Cuisine --</option>
+            <option value="0">All</option>
             <option value='1'>American</option>
             <option value ='1035'>Afghan</option>
             <option value='25'>Chinese</option> 
