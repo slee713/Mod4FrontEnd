@@ -19,19 +19,19 @@ class RestContainer extends Component {
         lng: -77.036873
     }
 
-    // componentDidMount(){
-    //     let pages = [0, 20, 40,60, 80]      
-    //     for (let i=0; i < pages.length; i++) {
-    //         fetch(this.props.restUrl+`?start=${pages[i]}`)
-    //         .then(res => res.json())
-    //         .then(restaurants => {
-    //             this.setState({
-    //                 restaurants : [ ...this.state.restaurants, ...restaurants],
-    //                 displayRestaurants: [ ...this.state.restaurants, ...restaurants],
-    //             })
-    //         })
-    //     }  
-    // }
+    componentDidMount(){
+        let pages = [0, 20, 40,60, 80]      
+        for (let i=0; i < pages.length; i++) {
+            fetch(this.props.restUrl+`?start=${pages[i]}&lat=${this.state.lat}&long=${this.state.lng}`)
+            .then(res => res.json())
+            .then(restaurants => {
+                this.setState({
+                    restaurants : [ ...this.state.restaurants, ...restaurants],
+                    displayRestaurants: [ ...this.state.restaurants, ...restaurants],
+                })
+            })
+        }  
+    }
 
     search = (e) => {
         e.preventDefault()
@@ -40,7 +40,8 @@ class RestContainer extends Component {
 
     changeView = (value) => {
         this.setState({
-            list: value
+            list: value,
+            cuisines: 0
         })
     }
 
@@ -110,18 +111,20 @@ class RestContainer extends Component {
     
     cuisineFilter = (value) => {
         if (value > 0){
-            this.setState({cuisineRest: [], sort: "", start: 0})
+            this.setState({cuisineRest: [], sort: "", start: 0, cuisines: value})
             let pages = [0, 20, 40, 60, 80]
             for (let i=0; i < pages.length; i++) {
                 fetch(this.props.restUrl+`?cuisines=${value}&start=${pages[i]}&lat=${this.state.lat}&long=${this.state.lng}`)
                 .then( res => res.json())
                 .then(cuisineRest => {
                     this.setState({
-                        cuisineRest:[ ...this.state.cuisineRest, ...cuisineRest],
-                        cuisines: value,
+                        cuisineRest:[ ...this.state.cuisineRest, ...cuisineRest]
                     })
                 })
             }
+        }
+        else{
+            this.setState({cuisines: 0})
         }
     }
 
@@ -175,7 +178,7 @@ class RestContainer extends Component {
                                 nextPage={this.nextPage}
                                 previousPage={this.previousPage}
                             />  :
-                             <Map searchResults={this.searchResults} restaurants={this.state.cuisines>0? this.state.cuisineRest : this.state.displayRestaurants}/>
+                             <Map searchResults={this.searchResults} restaurants={this.state.cuisines> 0 ? this.state.cuisineRest : this.state.displayRestaurants}/>
                         }
                     </div>
                     

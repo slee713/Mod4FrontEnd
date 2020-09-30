@@ -7,11 +7,11 @@ const ReservationCard = props => {
 
     const { id ,date, hour, table_id, party } = props.reservation
 
-    // useEffect(()=> {
-    //     fetch(props.baseUrl+'tables/'+table_id)
-    //     .then(res => res.json())
-    //     .then(data => setRestName(data.name))
-    // }, [])
+    useEffect(()=> {
+        fetch(props.baseUrl+'tables/'+table_id)
+        .then(res => res.json())
+        .then(data => setRestName(data.name))
+    }, [])
 
     const deleteReservation = () => {
        
