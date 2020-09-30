@@ -23,7 +23,7 @@ const SignUp = props => {
         .then(res => res.json())
         .then(user => {
                 if (user.error)
-                  alert(user.error)
+                  alert(user.error[0])
                 else{
                   localStorage.token = user.token
                   setOpen(false)
@@ -47,7 +47,7 @@ const SignUp = props => {
                     <Form.Input required label='Last name' placeholder='Last name' name="last_name"/>
                 </Form.Group>
                 <Form.Group widths={2}>
-                    <Form.Input required label='Address' placeholder='Address' name="address"/>
+                    <Form.Input label='Address' placeholder='Address' name="address"/>
                     <Form.Input required label='Email' placeholder='Email' name="email"/>
                 </Form.Group>
                 <Form.Group widths={2}>

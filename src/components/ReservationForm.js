@@ -18,15 +18,26 @@ const ReservationForm = props => {
     const [timeslots, setTimeSlots] = React.useState([])
     const [hour, setHour] = React.useState(0)
 
+    const today = new Date()
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    let todaysDate = yyyy + '-' + mm + '-' + dd
+
     let availableTimeSlots = (e) => {
         e.preventDefault()
-        fetch(restUrl + `/${props.id}?date=${date}&party_size=${partySize}`)
-        .then(res => res.json())
-        .then(timeslots => {
-            let options = timeslots.map(x => ({text:`${x}:00`, value: x}))
-            setTimeSlots(options)
-        })
+        if (date < todaysDate){
+            alert("Date cannot be before today's date")
+        }else{
+            fetch(restUrl + `/${props.id}?date=${date}&party_size=${partySize}`)
+            .then(res => res.json())
+            .then(timeslots => {
+                let options = timeslots.map(x => ({text:`${x}:00`, value: x}))
+                setTimeSlots(options)
+            })
+        }
     }
+    
 
     let makeReservation = (e) => {
 
@@ -37,9 +48,12 @@ const ReservationForm = props => {
         fetch(reservationUrl + `?restId=${props.id}`, configObj)
         .then(res => res.json())
         .then(response => {
+            if (response.error)
+                alert(response.error)
+            else{
             alert(response.message)
             setOpen(false)
-            props.closeDesc()
+            props.closeDesc()}
         })
 
     }
