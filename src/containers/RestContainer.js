@@ -153,11 +153,6 @@ class RestContainer extends Component {
 
                 </div>
                    
-                        {/* <div className="filter">
-                            <div className='filter'>
-                            
-                            </div>
-                        </div> */}
                     <div className='body'>
                             <div className = "sort">
                                 <Filter cuisineFilter={this.cuisineFilter}/>
