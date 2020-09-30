@@ -3,13 +3,15 @@
     flex-direction: row;
     flex-wrap: wrap;
     height: 800px;
-    width: auto;
+    width: 80%;
     overflow: auto;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card {
     padding:10px;
-    width: auto;
+    padding-top: 10px;
+    width: 25%;
+    margin-top: 20px;
 }
