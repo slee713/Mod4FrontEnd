@@ -152,14 +152,15 @@ class RestContainer extends Component {
                 <div className="image-div">
 
                 </div>
-                    <div className="main">
-                        <div className="filter">
+                   
+                        {/* <div className="filter">
                             <div className='filter'>
-                            <Filter cuisineFilter={this.cuisineFilter}/>
+                            
                             </div>
-                        </div>
-                        <div className='body'>
+                        </div> */}
+                    <div className='body'>
                             <div className = "sort">
+                                <Filter cuisineFilter={this.cuisineFilter}/>
                                 <Sort sortBy={this.sortBy} sort={this.state.sort}/>
                                 <div className="buttons">
                                     <button onClick={this.previousPage} > Previous Page</button>
@@ -176,7 +177,7 @@ class RestContainer extends Component {
                             />  :
                              <Map searchResults={this.searchResults} restaurants={this.state.cuisines>0? this.state.cuisineRest : this.state.displayRestaurants}/>}
                         </div>
-                    </div>
+                    
             </div>
         )
     
