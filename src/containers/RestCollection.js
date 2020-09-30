@@ -9,11 +9,13 @@ const RestCollection = props => {
             <div className="container">
             {
                 props.restaurants.map(restaurant => 
-                <RestCard 
-                    status={props.status}
-                    restaurant={restaurant} 
-                    key={restaurant.id}
-                />)
+                    <div className="card">
+                        <RestCard 
+                            status={props.status}
+                            restaurant={restaurant} 
+                            key={restaurant.id}
+                        />
+                    </div>)
             }
             </div>
             

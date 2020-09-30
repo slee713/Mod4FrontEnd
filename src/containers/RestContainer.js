@@ -14,7 +14,7 @@ class RestContainer extends Component {
         sort: "",
         cuisines: 0,
         cuisineRest: [],
-        list: false,
+        list: true,
         lat: 38.907192,
         lng: -77.036873
     }
@@ -158,25 +158,26 @@ class RestContainer extends Component {
                                 <Filter cuisineFilter={this.cuisineFilter}/>
                                 <Sort sortBy={this.sortBy} sort={this.state.sort}/>
                                 <div className="buttons">
-                                    {this.state.list ? <Button.Group>
-                                        <Button className='btn' onClick={this.previousPage} > Previous Page</Button>
-                                        <Button className='btn' onClick={() => this.nextPage()}>Next Page</Button>
-                                    </Button.Group> : null}
+                                    
+                                        <p className='btn' onClick={() => this.changeView(true)}>List</p>
+                                        <p className='btn' onClick={() => this.changeView(false)}>Map</p>
+                                    
                                 </div>
-                                    <Button.Group>
-                                        <Button className='btn' onClick={() => this.changeView(true)}>List</Button>
-                                        <Button className='btn' onClick={() => this.changeView(false)}>Map</Button>
-                                    </Button.Group>
+                                {this.state.list ? <div className='buttons'>
+                                        <p className='btn' onClick={this.previousPage} > Previous Page</p>
+                                        <p className='btn' onClick={() => this.nextPage()}>Next Page</p>
+                                    </div> : null}
                             </div>
-                             { this.state.list ? 
+                        { this.state.list ? 
                             <RestCollection 
                                 status={this.props.status}
                                 restaurants={this.displayTwenty()}
                                 nextPage={this.nextPage}
                                 previousPage={this.previousPage}
                             />  :
-                             <Map searchResults={this.searchResults} restaurants={this.state.cuisines>0? this.state.cuisineRest : this.state.displayRestaurants}/>}
-                        </div>
+                             <Map searchResults={this.searchResults} restaurants={this.state.cuisines>0? this.state.cuisineRest : this.state.displayRestaurants}/>
+                        }
+                    </div>
                     
             </div>
         )

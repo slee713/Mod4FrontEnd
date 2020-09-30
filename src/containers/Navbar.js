@@ -30,12 +30,11 @@ const Navbar = props => {
                 </div>
                 :
                 <div className="loggedOut">
-                    <div>
-                        <Signup status={props.status} logged_in={props.logged_in} baseUrl={props.baseUrl}/>
-                    </div>
-                    <div>
-                        <Login status={props.status} logged_in={props.logged_in} loginUrl={props.loginUrl}/>
-                    </div>
+                    
+                    <Signup status={props.status} logged_in={props.logged_in} baseUrl={props.baseUrl}/>
+                    
+                    <Login status={props.status} logged_in={props.logged_in} loginUrl={props.loginUrl}/>
+                
                 </div>
                 }
             </div>
