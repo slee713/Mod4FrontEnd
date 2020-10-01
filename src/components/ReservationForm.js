@@ -74,7 +74,7 @@ const ReservationForm = props => {
                     </Form.Group>
                     <Button onClick={(e) => availableTimeSlots(e)}>Find Available TimeSlots</Button> 
                     <Form.Group widths={2}>
-                        <Form.Select name="timeslot"
+                        <Form.Select 
                         fluid
                         label='Time'
                         name='timeslot'
