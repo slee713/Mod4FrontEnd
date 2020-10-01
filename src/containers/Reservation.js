@@ -55,7 +55,7 @@ const Reservation = props => {
     
     return(
         <div className="reservationContainer">
-            <h1>My Reservations</h1>
+            <h1 className='header'>My Reservations</h1>
             <FilterReservations filter={changeFilter}/>
             {displayRes().map(r => 
                 <ReservationCard key={r.id} reservation={r} baseUrl={props.baseUrl} delete={removeReservations}/>

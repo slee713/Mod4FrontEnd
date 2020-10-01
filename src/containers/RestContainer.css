@@ -57,7 +57,7 @@
     flex-direction: row;
     justify-content: space-around;
     margin: 5px;
-    width: 200px;
+    width: 100px;
     height: fit-content;
   }
 
@@ -68,7 +68,13 @@
     cursor: pointer;
   }
 
-  .btn{
-      /* margin: 5px; */
-      padding-top: 5px;
+  .buttons-container{
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
   }
+
+  /* .btn{
+      /* margin: 5px; */
+      /* padding-top: 5px; */

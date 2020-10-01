@@ -160,15 +160,22 @@ class RestContainer extends Component {
                             <div className = "sort">
                                 <Filter cuisines={this.state.cuisines} cuisineFilter={this.cuisineFilter}/>
                                 <Sort sortBy={this.sortBy} sort={this.state.sort}/>
-                                <div className="buttons">
-                                    
-                                        <p className='btn' onClick={() => this.changeView(true)}>List</p>
-                                        <p className='btn' onClick={() => this.changeView(false)}>Map</p>
-                                    
+                                <div className='buttons-container'>
+                                        <div className='buttons'onClick={() => this.changeView(true)}>
+                                        <p className='btn' >List</p>
+                                        </div>
+                                        <div className='buttons' onClick={() => this.changeView(false)}>
+                                        <p className='btn' >Map</p>
+                                        </div>
                                 </div>
-                                {this.state.list ? <div className='buttons'>
-                                        <p className='btn' onClick={this.previousPage} > Previous Page</p>
-                                        <p className='btn' onClick={() => this.nextPage()}>Next Page</p>
+                                {this.state.list ? 
+                                <div className='buttons-container'>
+                                        <div className='buttons' onClick={this.previousPage}>
+                                            <p className='btn'  > Previous Page</p>
+                                        </div>
+                                        <div className='buttons' onClick={() => this.nextPage()}>
+                                            <p className='btn' >Next Page</p>
+                                        </div>
                                     </div> : null}
                             </div>
                         { this.state.list ? 
