@@ -4,6 +4,7 @@
     justify-content: center;
     border: 1px black;
     margin-top:45px;
+    height: auto;
 }
 
 .main {
@@ -18,7 +19,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #F16451;
+    background-color: white;
 }
 
 
@@ -50,10 +51,24 @@
 
  .buttons {
     background-color: #F16451;
+    border: 1px solid #F16451;
+    border-radius: 3px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 10%;
+    margin: 5px;
+    width: 200px;
+    height: fit-content;
   }
 
-  
+  .buttons:hover{
+    background-color: white;
+    color: #F16451;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .btn{
+      /* margin: 5px; */
+      padding-top: 5px;
+  }

@@ -39,7 +39,7 @@ const EditUser = props => {
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 open={open}
-                trigger={<p>Update Information</p>}
+                trigger={<Button>Update Information</Button>}
             >
                 <Modal.Header>Update Information</Modal.Header>
                     <Modal.Content>
