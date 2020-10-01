@@ -11,7 +11,7 @@ const Reservation = props => {
     let todaysDate = yyyy + '-' + mm + '-' + dd
 
     const [reservations, setReservations] = React.useState([])
-    const [filtered, setFiltered] = React.useState([])
+    const [filter, setFilter] = React.useState('all')
 
     useEffect(()=> {
         let config = {
@@ -24,7 +24,6 @@ const Reservation = props => {
         .then(res => res.json())
         .then(userData => {
             setReservations(userData.reservations.sort((a,b) => a.date.localeCompare(b.date)))
-            setFiltered(userData.reservations.sort((a,b) => a.date.localeCompare(b.date)))
         })
     }, [])
 
@@ -33,28 +32,32 @@ const Reservation = props => {
         setReservations(updatedReservations)
     }
 
-    const filter = (value) => {
-        switch (value){
+    let displayRes = () => {
+        switch (filter){
             case 'all':
-                setFiltered(reservations)
+                return reservations
                 break
             case 'past':
-                setFiltered(reservations.filter(r => r.date < todaysDate))
+                return reservations.filter(r => r.date < todaysDate)
                 break
             case 'today':
-                setFiltered(reservations.filter(r => r.date === todaysDate))
+                return reservations.filter(r => r.date === todaysDate)
                 break
             case 'upcoming':
-                setFiltered(reservations.filter(r => r.date > todaysDate))
+                return reservations.filter(r => r.date > todaysDate)
                 break
         }
     }
+
+   let changeFilter = (value) =>{
+       setFilter(value)
+   }
     
     return(
         <div className="reservationContainer">
             <h1>My Reservations</h1>
-            <FilterReservations filter={filter}/>
-            {filtered.map(r => 
+            <FilterReservations filter={changeFilter}/>
+            {displayRes().map(r => 
                 <ReservationCard key={r.id} reservation={r} baseUrl={props.baseUrl} delete={removeReservations}/>
                 )}
         </div>

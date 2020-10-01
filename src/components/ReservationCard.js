@@ -3,7 +3,7 @@ import {Card} from 'semantic-ui-react'
 import EditResForm from './EditResForm'
 
 const ReservationCard = props => {
-    const [restName, setRestName] = useState("Placeholder")
+    const [restName, setRestName] = useState("Loading")
 
     const { id ,date, hour, table_id, party } = props.reservation
 
@@ -31,7 +31,7 @@ const ReservationCard = props => {
 
     return(
         
-        <Card centered>
+        <Card style={{'height': 'auto'}} centered>
             <Card.Content>
                 <Card.Header>{restName}</Card.Header>
                 
