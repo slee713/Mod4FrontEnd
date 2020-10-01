@@ -21,7 +21,7 @@ const Navbar = props => {
 
         return(
             <div className="navbar">
-                <Link to="/" className="link"><img className='logo' src={require('../delish.png')}/></Link>
+                <Link to="/" className="link"><img className='logo' src={require('../tablefinder.png')}/></Link>
                 {props.logged_in ?
                 <div className="loggedIn">
                     <Link to="/account" className='navbar-links'>My Account</Link>

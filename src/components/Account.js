@@ -42,7 +42,7 @@ const Account = props => {
 
     return(
         <div className='account-div'>
-            <h1>Account Page</h1>
+            <h1 className='header'>Account Page</h1>
             <h3>Username: {username}</h3>
             <h3>First Name: {first_name}</h3>
             <h3>Last Name: {last_name}</h3>
