@@ -185,7 +185,7 @@ class RestContainer extends Component {
                                 nextPage={this.nextPage}
                                 previousPage={this.previousPage}
                             />  :
-                             <Map searchResults={this.searchResults} restaurants={this.state.cuisines> 0 ? this.state.cuisineRest : this.state.displayRestaurants}/>
+                             <Map lat={this.state.lat} long={this.state.lng} searchResults={this.searchResults} restaurants={this.state.cuisines> 0 ? this.state.cuisineRest : this.state.displayRestaurants}/>
                         }
                     </div>
                     

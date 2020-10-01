@@ -16,13 +16,6 @@ const mapContainerStyle = {
     width: '100vw',
     height: '100vh'
 }
-const center = {
-    lat: 38.907192,
-    lng: -77.036873
-}
-
-
-
 
 
 export default function Map(props) {
@@ -41,6 +34,11 @@ export default function Map(props) {
         mapRef.current.panTo({lat, lng})
         mapRef.current.setZoom(13)
     }, [])
+
+    const center = {
+        lat: props.lat,
+        lng: props.long
+    }
 
     if(loadError) return "Error Loading Map"
     if(!isLoaded) return "Loading Maps"
