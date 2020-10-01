@@ -28,6 +28,8 @@ const ReservationForm = props => {
         e.preventDefault()
         if (date < todaysDate){
             alert("Date cannot be before today's date")
+        }else if (partySize > 8 || partySize < 1){
+            alert('Party size must be greater than 0 and less than 9')
         }else{
             fetch(restUrl + `/${props.id}?date=${date}&party_size=${partySize}`)
             .then(res => res.json())
@@ -70,7 +72,7 @@ const ReservationForm = props => {
                 <Form onSubmit={(e) => makeReservation(e)}>
                     <Form.Group unstackable widths={2}>
                         <Form.Input required type='date' label='Date' placeholder='Date' name="date" onChange={(e) => setDate(e.target.value)} />
-                        <Form.Input required type='number' label='Party Size' placeholder='Party Size' name="party_size" onChange={(e) => setPartySize(e.target.value)}/>
+                        <Form.Input required type='number' label='Party Size' min='1' max='8' placeholder='Party Size' name="party_size" onChange={(e) => setPartySize(e.target.value)}/>
                     </Form.Group>
                     <Button onClick={(e) => availableTimeSlots(e)}>Find Available TimeSlots</Button> 
                     <Form.Group widths={2}>
